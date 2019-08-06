@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 
-class Profile extends Component {
+class Home extends Component {
     state = {
 
     };
@@ -10,11 +10,11 @@ class Profile extends Component {
         return (
             <>
                 <Jumbotron>
-                    <h1>Profile</h1>
+                    <h1>Home</h1>
                 </Jumbotron>
             </>
         )
     }
 }
 
-export default Profile;
+export default Home;
