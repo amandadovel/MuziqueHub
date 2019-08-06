@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "./components/Grid";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Signup from "./pages/Signup";
 import Concerts from "./pages/Concerts";
+import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
