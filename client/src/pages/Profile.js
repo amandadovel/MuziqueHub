@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import Navbar from "../components/Navbar";
 
 class Profile extends Component {
     state = {
@@ -10,12 +9,9 @@ class Profile extends Component {
     render() {
         return (
             <>
-                <Navbar />
-                <div className="container">
-                    <Jumbotron>
-                        <h1>Profile</h1>
-                    </Jumbotron>
-                </div>
+                <Jumbotron>
+                    <h1>Profile</h1>
+                </Jumbotron>
             </>
         )
     }

@@ -1,12 +1,10 @@
 import axios from "axios";
 
 export default {
-    // Search database for user
-    getUser: function() {
-        return axios.get("/api/user/login");
+    login: (loginInfo) => {
+        return axios.post("/api/users/login", loginInfo);
     },
-    // Create user in database
-    createUser: function(user) {
-        return axios.post("/api/user/signup", user);
-    },
+    signup: (signupInfo) => {
+        return axios.post("/api/users/signup", signupInfo);
+    }
 };
