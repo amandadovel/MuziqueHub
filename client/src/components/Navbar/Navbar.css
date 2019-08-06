@@ -1,0 +1,18 @@
+.navbar {
+    position: sticky;
+    background: #e9ecef;
+    margin-bottom: 1.25em;
+}
+
+.navbar-brand,
+.nav-link {
+    color: rgb(88, 88, 88);
+}
+
+.active {
+    color: rgb(0, 0, 0);
+}
+
+.active:hover {
+    color: black;
+}

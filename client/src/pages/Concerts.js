@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Jumbotron from "../components/Jumbotron";
 
-class Home extends Component {
+class Concerts extends Component {
     state = {
 
     };
@@ -10,11 +10,11 @@ class Home extends Component {
         return (
             <>
                 <Jumbotron>
-                    <h1>Home</h1>
+                    <h1>Concert</h1>
                 </Jumbotron>
             </>
         )
     }
 }
 
-export default Home;
+export default Concerts;
