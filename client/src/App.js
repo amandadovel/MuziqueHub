@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import SearchBar from "./components/SearchBar";
-import youtube from "./apis/youtube";
+import youtube from "../../routes/api/youtube";
 import VideoDetail from "./components/VideoDetail";
 
 class App extends React.Component {
