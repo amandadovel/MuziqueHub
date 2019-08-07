@@ -3,12 +3,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("./passport");
 const routes = require("./routes");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(passport.initialize());
 // app.use(passport.session());
 

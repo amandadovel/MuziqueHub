@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 
 class Concerts extends Component {

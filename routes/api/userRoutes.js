@@ -4,15 +4,14 @@ const passport = require("../../passport");
 // Matches with "/api/users/signup"
 router.post("/signup", (req, res, next) => {
     passport.authenticate("local-signup", (err, user, info) => {
-        console.log(err);
-        console.log(user);
-        console.log(info);
+        console.log("Error: ", err);
+        console.log("User: ", user);
+        console.log("Info:", info);
         
         if (err) {
             return res.json({ message: err || "Oops something happened..." });
-        } else if (!err) {
-            return res.json(user);
         }
+        return res.send(user);
     })(req, res, next);
 });
 
