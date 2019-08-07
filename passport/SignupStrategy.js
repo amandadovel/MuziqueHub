@@ -5,10 +5,12 @@ const salt = bcrypt.genSaltSync(10);
 
 const SignupStrategy = new Strategy({ usernameField: "email" }, (email, password, done) => {
 
-    User.findOne({ email: email }).lean().exec((err, user) => {
+    console.log("Email: ", email);
+    User.findOne({ email: email }), (err, user) => {
 
+        
         if (err) {
-            return done(err, null);
+            return done(err);
         }
 
         if (user) {
@@ -25,10 +27,9 @@ const SignupStrategy = new Strategy({ usernameField: "email" }, (email, password
             if (error) {
                 return done(error, null);
             }
-            delete inserted.password
             return done(null, inserted);
         });
-    });
+    };
 
 });
 

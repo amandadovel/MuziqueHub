@@ -26,12 +26,11 @@ class Signup extends Component {
 
     signup = () => {
         API.signup({
-            username: this.state.username,
             email: this.state.email,
             password: this.state.password
         })
         .then(user => {
-            console.log("User Data", user.data);
+            console.log("User: ", user);
         }).catch(err => {
             console.log(err);
         })
