@@ -5,6 +5,16 @@ class Artist extends Component {
     state = {
 
     };
+    
+    handleInputChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleFormSubmit = e => {
+
+    }
 
     render() {
         return (
