@@ -9,8 +9,10 @@ export default {
         console.log("Signup Info: ", signupInfo);
         return axios.post("/api/users/signup", signupInfo);
     },
-    // TODO
-    getConcerts: (artist) => {
-        return axios.get("<songkick url with hidden API key>");
+    // Gets concert data from eventful API
+    getConcerts: (music) => {
+        console.log("Eventful data:", music);
+        return axios.get("/api/concerts", music);
+        
     }
 };
