@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "./components/Grid";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Concerts from "./pages/Concerts";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Home from "./pages/HomePage";
+import Arists from "./pages/ArtistPage";
+import Signup from "./pages/SignupPage";
+import Login from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -17,7 +17,7 @@ const App = () => (
                     <Route exact path="/" component={Home} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
-                    <Route path="/concerts" component={Concerts} />
+                    <Route path="/artist" component={Arists} />
                     <Route component={NotFound} />
                 </Switch>
             </Container>
