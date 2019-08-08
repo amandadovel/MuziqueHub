@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Searchbar extends React.Component {
+class SearchBar extends Component {
     state = {
         term: 'Default tect'
     };
@@ -27,4 +27,4 @@ class Searchbar extends React.Component {
         )
     }
 }
-export default Searchbar;
+export default SearchBar;

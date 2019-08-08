@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 
-class Concerts extends Component {
+class Artist extends Component {
     state = {
 
     };
@@ -10,11 +10,11 @@ class Concerts extends Component {
         return (
             <>
                 <Jumbotron>
-                    <h1>Concert</h1>
+                    <h1>Artist</h1>
                 </Jumbotron>
             </>
         )
     }
 }
 
-export default Concerts;
+export default Artist;
