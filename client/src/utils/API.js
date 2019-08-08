@@ -9,10 +9,9 @@ export default {
         console.log("Signup Info: ", signupInfo);
         return axios.post("/api/users/signup", signupInfo);
     },
-    // Gets concert data from eventful API
-    getConcerts: (music) => {
-        console.log("Eventful data:", music);
-        return axios.get("/api/concerts", music);
+    getArtistInfo: (getArtistInfo) => {
+        console.log("Eventful data:", getArtistInfo);
+        return axios.get("/api/concerts", getArtistInfo);
         
     }
 };
