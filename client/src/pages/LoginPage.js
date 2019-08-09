@@ -7,8 +7,11 @@ import API from "../utils/API";
 
 class Login extends Component {
     state = {
+        loggedIn: false,
+        user: null,
+        message: "",
         username: "",
-        password: ""
+        password: "",
     };
 
     handleInputChange = e => {
@@ -27,11 +30,10 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(user => {
-            console.log("User logged in: ", user);
-            
+            console.log("Login Data: ", user.data);
         }).catch(err => {
             console.log(err);
-        })
+        });
     }
 
     render() {
@@ -44,22 +46,20 @@ class Login extends Component {
                         </Jumbotron>
                     </Col>
                 </Row>
-                <Row>
-                    <Col size="md-12">
-                        <div className="w-50 m-auto">
-                            <Card title="Login Form">
-                                <LoginForm 
-                                    handleInputChange={ this.handleInputChange }
-                                    handleFormSubmit={ this.handleFormSubmit }
-                                    username={ this.state.username }
-                                    password={ this.state.password }
-                                />
-                            </Card>
-                        </div>
+                <Row center>
+                    <Col size="md-6">
+                        <Card title="Login Form">
+                            <LoginForm 
+                                handleInputChange={ this.handleInputChange }
+                                handleFormSubmit={ this.handleFormSubmit }
+                                username={ this.state.username }
+                                password={ this.state.password }
+                            />
+                        </Card>
                     </Col>
                 </Row>
             </>
-        )
+        );
     }
 }
 

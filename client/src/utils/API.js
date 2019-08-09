@@ -5,7 +5,6 @@ export default {
         return axios.post("/api/users/login", loginInfo);
     },
     signup: (signupInfo) => {
-        console.log("Signup Info: ", signupInfo);
         return axios.post("/api/users/signup", signupInfo);
     },
     getArtistInfo: (artistName) => {

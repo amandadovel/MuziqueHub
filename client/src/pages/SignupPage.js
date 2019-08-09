@@ -8,12 +8,12 @@ import API from "../utils/API";
 class Signup extends Component {
     state = {
         loggedIn: false,
+        user: null,
+        message: "",
         username: "",
         email:"",
         password: "",
-        passwordConf: "",
-        user: null,
-        message: ""
+        passwordConf: ""
     };
 
     handleInputChange = e => {
@@ -31,10 +31,11 @@ class Signup extends Component {
         API.signup({
             username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            passwordConf: this.state.passwordConf
         })
         .then(user => {
-            console.log("user: ", user);
+            console.log("Sign Up Data: ", user.data);
         }).catch(err => {
             console.log(err);
         })
@@ -50,20 +51,18 @@ class Signup extends Component {
                         </Jumbotron>
                     </Col>
                 </Row>
-                <Row>
-                    <Col size="md-12">
-                        <div className="w-50 m-auto">
-                            <Card title="Signup Form">
-                                <SignupForm
-                                    handleInputChange={ this.handleInputChange }
-                                    handleFormSubmit={ this.handleFormSubmit }
-                                    username={ this.state.username }
-                                    email={ this.state.email }
-                                    password={ this.state.password }
-                                    passwordConf={ this.state.passwordConf }
-                                />
-                            </Card>
-                        </div>
+                <Row center>
+                    <Col size="md-6">
+                        <Card title="Signup Form">
+                            <SignupForm
+                                handleInputChange={ this.handleInputChange }
+                                handleFormSubmit={ this.handleFormSubmit }
+                                username={ this.state.username }
+                                email={ this.state.email }
+                                password={ this.state.password }
+                                passwordConf={ this.state.passwordConf }
+                            />
+                        </Card>
                     </Col>
                 </Row>
             </>
