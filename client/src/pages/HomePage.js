@@ -1,49 +1,103 @@
 import React, { Component } from "react";
+import { Col, Row } from "../components/Grid";
+import { List } from "../components/List";
 import Jumbotron from "../components/Jumbotron";
-import SearchBar from "../components/SearchBar";
-import VideoDetail from "../components/VideoDetail";
+import ArtistForm from "../components/ArtistForm";
+import Card from "../components/Card";
+import Artist from "../components/Artist";
+import API from "../utils/API";
 
-class Home extends Component {
+class ArtistSearch extends Component {
     state = {
-        videos: [],
-        selectedVideo: null
-    }
-    // handleSubmit = async (termFromSearchBar) => {
-    //     const response = await youtube.get('/search', {
-    //         params: {
-    //             q: termFromSearchBar
-    //         }
-    //     })
-    //     this.setState({
-    //         videos: response.data.items
-    //     })
-    // };
-    // handleVideoSelect = (video) => {
-    //     this.setState({selectedVideo: video})
-    // }
+        artists: [],
+        artistName: "",
+        message: "Search for your favorite artist to begin!"
+    };
+
+    handleInputChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
+
+
+    getArtistInfo = () => {
+        API.getArtistInfo(this.state.artistName)
+            .then(res =>
+                this.setState({
+                    artists: res.data 
+                })
+            )
+            .catch(() =>
+                this.setState({
+                    artists: [],
+                    message: "No artists found, please try again"
+                })
+            );
+    };
+
+    handleFormSubmit = e => {
+        e.preventDefault();
+        this.getArtistInfo();
+    };
+
 
     render() {
         return (
             <>
-                <Jumbotron>
-                    <h1>Home</h1>
-                </Jumbotron>
-                <div className='ui container' style={{marginTop: '1em'}}>
-                    <SearchBar handleFormSubmit={this.handleSubmit}/>
-                    <div className='ui grid'>
-                        <div className="ui row">
-                            <div className="eleven wide column">
-                                <VideoDetail video={this.state.selectedVideo}/>
-                            </div>
-                            <div className="five wide column">
-                                {/* <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/> */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Row>
+                    <Col size="md-12">
+                        <Jumbotron>
+                            <h1 className="text-center">
+                                <strong>Artist Search</strong>
+                            </h1>
+                            <h2 className="text-center">AudioDB search and save the artists you love</h2>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col size="md-12">
+                        <Card title="Artist Search">
+                            <ArtistForm
+                                handleInputChange={this.handleInputChange}
+                                handleFormSubmit={this.handleFormSubmit}
+                                artistName={this.state.artistName}
+                            />
+                        </Card>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col size="md-12">
+                        { this.state.artists.length ? (
+                        <Card title="Results">
+                            <List>
+                                { this.state.artists.map(artist => (
+                                    <Artist
+                                        key={artist.idArtist}
+                                        artist={artist.strArtist}
+                                        label={artist.strLabel}
+                                        genre={artist.strGenre}
+                                        website={artist.strWebsite}
+                                        facebook={artist.strFacebook}
+                                        twitter={artist.strTwitter}
+                                        biography={artist.strBiographyEN}
+                                        country={artist.strCountry}
+                                        thumbnail={artist.strArtistThumb}
+                                        logo={artist.strArtistLogo}
+                                        fanart={artist.strArtistFanart}
+                                    >
+                                    </Artist>
+                                )) }
+                            </List>
+                        </Card>
+                        ):  <h2 className="text-center">{this.state.message}</h2> }
+                    </Col>
+                </Row>
             </>
         )
     }
 }
 
-export default Home;
+export default ArtistSearch;
