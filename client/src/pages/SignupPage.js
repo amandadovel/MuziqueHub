@@ -7,10 +7,13 @@ import API from "../utils/API";
 
 class Signup extends Component {
     state = {
+        loggedIn: false,
         username: "",
         email:"",
         password: "",
-        passwordConf: ""
+        passwordConf: "",
+        user: null,
+        message: ""
     };
 
     handleInputChange = e => {
@@ -26,19 +29,18 @@ class Signup extends Component {
 
     signup = () => {
         API.signup({
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password
         })
         .then(user => {
-            console.log("User: ", user);
+            console.log("user: ", user);
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
-        console.log(this.state);
-        
         return (
             <>
                 <Row>

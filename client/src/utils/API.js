@@ -3,7 +3,7 @@ require("dotenv").config();
 
 export default {
     login: (loginInfo) => {
-        return axios.get("/api/users/login", loginInfo);
+        return axios.post("/api/users/login", loginInfo);
     },
     signup: (signupInfo) => {
         console.log("Signup Info: ", signupInfo);

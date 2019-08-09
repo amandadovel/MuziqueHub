@@ -1,29 +1,41 @@
 const router = require("express").Router();
 const passport = require("../../passport");
+const User = require("../../models/User");
 
 // Matches with "/api/users/signup"
 router.post("/signup", (req, res, next) => {
-    passport.authenticate("local-signup", (err, user, info) => {
-        console.log("Error: ", err);
-        console.log("User: ", user);
-        console.log("Info:", info);
-        
-        if (err) {
-            return res.json({ message: err || "Oops something happened..." });
+    const { username, email, password } = req.body;
+    User.findOne({ username: username }, (err, user) => {
+        if (err) throw err;
+        if (user) {
+            console.log("User already exists");
+            return res.json("User already exists");
         }
-        return res.send(user);
-    })(req, res, next);
+        if (!user) {
+            let newUser = new db.User({
+                username: username,
+                email: email,
+                password: password
+            });
+            newUser.password = newUser.generateHash(password);
+            newUser.save((err, savedUser) => {
+                if (err) throw err;
+                console.log("New User Saved");
+                res.redirect(307, "/api/users/login");
+            });
+        }
+    });
 });
 
 // Matches with "/api/users/login"
 router.post("/login", (req, res, next) => {
-
-    passport.authenticate("local-login", (err, user, info) => {
+    console.log(req.body);
+    
+    passport.authenticate("local-login", (req, res) => {
         if (err) {
-            return res.status(500).json({
-                message: err || "Oops something happened...",
-            });
+            return res.status(500).json(err)
         }
+        console.log("Auth Login: ", req.user);
         return res.json(user);
     })(req, res, next);
 });

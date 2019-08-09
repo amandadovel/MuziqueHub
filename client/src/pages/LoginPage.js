@@ -3,6 +3,7 @@ import { Row, Col } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import LoginForm from "../components/LoginForm";
+import API from "../utils/API";
 
 class Login extends Component {
     state = {
@@ -14,6 +15,23 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+    }
+
+    handleFormSubmit = e => {
+        e.preventDefault();
+        this.login();
+    }
+
+    login = () => {
+        API.login({
+            username: this.state.username,
+            password: this.state.password
+        }).then(user => {
+            console.log("User logged in: ", user);
+            
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
