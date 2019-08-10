@@ -85,6 +85,8 @@ class ArtistSearch extends Component {
                                         thumbnail={artist.strArtistThumb}
                                         logo={artist.strArtistLogo}
                                         fanart={artist.strArtistFanart}
+                                        fanart2={artist.strArtistFanart2}
+                                        fanart3={artist.strArtistFanart3}
                                     >
                                     </Artist>
                                 )) }
