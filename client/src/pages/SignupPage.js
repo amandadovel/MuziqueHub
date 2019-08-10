@@ -7,6 +7,8 @@ import API from "../utils/API";
 
 class Signup extends Component {
     state = {
+        loggedIn: false,
+        message: "",
         username: "",
         email:"",
         password: "",
@@ -26,19 +28,28 @@ class Signup extends Component {
 
     signup = () => {
         API.signup({
+            username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            passwordConf: this.state.passwordConf
         })
         .then(user => {
-            console.log("User: ", user);
+            if (user.data.errors) {
+                this.setState({
+                    loggedIn: false,
+                    message: user.data.errors
+                });
+            }
+            if (user.data.loggedIn) {
+                this.props.history.push("/favorites");
+            }
+            console.log("Sign Up Data: ", user.data);
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
-        console.log(this.state);
-        
         return (
             <>
                 <Row>
@@ -48,20 +59,19 @@ class Signup extends Component {
                         </Jumbotron>
                     </Col>
                 </Row>
-                <Row>
-                    <Col size="md-12">
-                        <div className="w-50 m-auto">
-                            <Card title="Signup Form">
-                                <SignupForm
-                                    handleInputChange={ this.handleInputChange }
-                                    handleFormSubmit={ this.handleFormSubmit }
-                                    username={ this.state.username }
-                                    email={ this.state.email }
-                                    password={ this.state.password }
-                                    passwordConf={ this.state.passwordConf }
-                                />
-                            </Card>
-                        </div>
+                <Row center>
+                    <Col size="md-6">
+                        <Card title="Signup Form">
+                            <SignupForm
+                                handleInputChange={ this.handleInputChange }
+                                handleFormSubmit={ this.handleFormSubmit }
+                                username={ this.state.username }
+                                email={ this.state.email }
+                                password={ this.state.password }
+                                passwordConf={ this.state.passwordConf }
+                                message={ this.state.message }
+                            />
+                        </Card>
                     </Col>
                 </Row>
             </>

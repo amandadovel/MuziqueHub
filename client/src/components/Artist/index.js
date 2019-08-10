@@ -46,4 +46,4 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
     </ListItem>
 )
         
-export default Artist
+export default Artist;
