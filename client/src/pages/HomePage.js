@@ -20,7 +20,6 @@ class ArtistSearch extends Component {
         });
     };
 
-
     getArtistInfo = () => {
         API.getArtistInfo(this.state.artistName)
             .then(res =>
@@ -40,7 +39,6 @@ class ArtistSearch extends Component {
         e.preventDefault();
         this.getArtistInfo();
     };
-
 
     render() {
         return (
