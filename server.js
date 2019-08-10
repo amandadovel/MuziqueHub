@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("./passport");
 const session = require("express-session");
+const path = require("path");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // Passport config
 app.use(session({ 
-    secret: "sjwpibadrp",
+    secret: "szwpibrdrl",
     resave: true, 
     saveUninitialized: true 
 }));
@@ -27,6 +28,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Routes
 app.use(routes);
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3db", { useCreateIndex: true, useNewUrlParser: true })
