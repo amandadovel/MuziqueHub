@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("./passport");
+const session = require("express-session");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -10,8 +11,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Passport config
+app.use(session({ 
+    secret: "sjwpibadrp",
+    resave: true, 
+    saveUninitialized: true 
+}));
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {

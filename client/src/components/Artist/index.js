@@ -6,7 +6,7 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
     <ListItem>
         <Row className="flex-wrap-reverse">
             <Col size="md-8">
-
+                
                 { logo ? (
                 <img src={logo} alt="logo"></img>
                 ) : <div></div> }
@@ -26,8 +26,8 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 <a target="_blank" rel="noopener noreferrer" href={twitter}>Twitter</a>
                 <br></br>
                 <p className="biography">{biography}</p>
-                <img src={thumbnail} alt="thumbnail"></img>
-                <img src={fanart} alt="fanart"></img>
+                <img className="img-fluid" src={thumbnail} alt="thumbnail"></img>
+                <img className="img-fluid" src={fanart} alt="fanart"></img>
             </Col>
         </Row>
     </ListItem>
