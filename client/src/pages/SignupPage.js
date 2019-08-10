@@ -8,7 +8,6 @@ import API from "../utils/API";
 class Signup extends Component {
     state = {
         loggedIn: false,
-        user: null,
         message: "",
         username: "",
         email:"",
@@ -35,6 +34,15 @@ class Signup extends Component {
             passwordConf: this.state.passwordConf
         })
         .then(user => {
+            if (user.data.errors) {
+                this.setState({
+                    loggedIn: false,
+                    message: user.data.errors
+                });
+            }
+            if (user.data.loggedIn) {
+                this.props.history.push("/favorites");
+            }
             console.log("Sign Up Data: ", user.data);
         }).catch(err => {
             console.log(err);
@@ -42,6 +50,7 @@ class Signup extends Component {
     }
 
     render() {
+        console.log(this.state);
         return (
             <>
                 <Row>
@@ -61,6 +70,7 @@ class Signup extends Component {
                                 email={ this.state.email }
                                 password={ this.state.password }
                                 passwordConf={ this.state.passwordConf }
+                                message={ this.state.message }
                             />
                         </Card>
                     </Col>

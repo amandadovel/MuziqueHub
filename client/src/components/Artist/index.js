@@ -6,7 +6,7 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
     <ListItem>
         <Row className="flex-wrap-reverse">
             <Col size="md-8">
-
+                
                 { logo ? (
                 <img src={logo} alt="logo"></img>
                 ) : <div></div> }

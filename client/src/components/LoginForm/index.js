@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginForm.css";
 
-const LoginForm = ({ username, password, handleInputChange, handleFormSubmit }) => (
+const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, message }) => (
     <form>
         <div className="form-group">
             <label htmlFor="Username">Username</label>
@@ -35,6 +35,15 @@ const LoginForm = ({ username, password, handleInputChange, handleFormSubmit }) 
             >Login
             </button>
         </div>
+        { message.length ? (
+            <>
+                { message.map(msg => (
+                    <div className="alert alert-danger my-2" key={ msg }>
+                        <span>{ msg }</span>
+                    </div>
+                ))}
+            </>
+        ) : <div></div> }
     </form>
 );
 
