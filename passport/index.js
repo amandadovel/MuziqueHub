@@ -3,11 +3,11 @@ const LoginStrategy = require("./LoginStrategy");
 const db = require("../models");
 
 passport.serializeUser((user, done) => {
-    done(null, { _id: user.id } );
+    done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    db.User.findOne(id, function(err, user) {
+    db.User.findById(id, function(err, user) {
         done(err, user);
     });
 });

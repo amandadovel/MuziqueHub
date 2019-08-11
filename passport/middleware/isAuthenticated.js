@@ -1,6 +1,8 @@
 module.exports = function(req, res, next) {
-    if (req.user) {
-        return next();
+    if (req.isAuthenticated()) {
+        console.log("User Authenticated");
+        next();
+    } else {
+        return res.redirect("/api/users/fail");
     }
-    return res.redirect("/");
 };

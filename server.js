@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("./passport");
 const session = require("express-session");
 const path = require("path");
+const flash = require("connect-flash");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Passport config
+app.use(flash());
 app.use(session({ 
     secret: "szwpibrdrl",
     resave: true, 

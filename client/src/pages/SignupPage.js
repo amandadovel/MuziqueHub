@@ -34,16 +34,16 @@ class Signup extends Component {
             passwordConf: this.state.passwordConf
         })
         .then(user => {
-            if (user.data.errors) {
+            if (user.data.error) {
                 this.setState({
                     loggedIn: false,
-                    message: user.data.errors
+                    message: user.data.error
                 });
             }
             if (user.data.loggedIn) {
                 this.props.history.push("/favorites");
             }
-            console.log("Sign Up Data: ", user.data);
+            console.log("Sign Up Data: ", user.data.error);
         }).catch(err => {
             console.log(err);
         })
@@ -52,13 +52,6 @@ class Signup extends Component {
     render() {
         return (
             <>
-                <Row>
-                    <Col size="md-12">
-                        <Jumbotron>
-                            <h1>Signup</h1>
-                        </Jumbotron>
-                    </Col>
-                </Row>
                 <Row center>
                     <Col size="md-6">
                         <Card title="Signup Form">

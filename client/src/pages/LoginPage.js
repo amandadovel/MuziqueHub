@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import LoginForm from "../components/LoginForm";
 import API from "../utils/API";
@@ -10,7 +9,7 @@ class Login extends Component {
         loggedIn: false,
         message: "",
         username: "",
-        password: "",
+        password: ""
     };
 
     handleInputChange = e => {
@@ -29,31 +28,23 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(user => {
-            if (user.data.errors) {
+            if (user.data) {
                 this.setState({
                     loggedIn: false,
-                    message: user.data.errors
+                    message: user.data
                 });
             }
             if (user.data.loggedIn) {
                 this.props.history.push("/favorites");
             }
-            console.log("Login Data: ", user.data);
         }).catch(err => {
-            console.log("ERROR:", err);
+            console.log(err);
         });
     }
 
     render() {
         return (
             <>
-                <Row>
-                    <Col size="md-12">
-                        <Jumbotron>
-                            <h1>Login</h1>
-                        </Jumbotron>
-                    </Col>
-                </Row>
                 <Row center>
                     <Col size="md-6">
                         <Card title="Login Form">
