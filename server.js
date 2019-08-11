@@ -24,7 +24,7 @@ app.use(passport.session());
 
 // Static assets
 if (process.env.NODE_ENV === "production") {
-    express.static(path_join(__dirname, '../client/build'))
+    app.use(express.static("client/build"));
 }
 
 // Routes
