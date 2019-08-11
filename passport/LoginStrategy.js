@@ -6,11 +6,9 @@ const LoginStrategy = new Strategy( (username, password, done) => {
         if (err) {
             return done(err, null);
         }
-
         if (!user) {
             return done(null, false, { message: "Username or Password not valid" });
         }
-
         if (!user.validatePassword(password, user.password)) {
             return done(null, false, { message: "Username or Password not valid" });
         }
