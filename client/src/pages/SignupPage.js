@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import SignupForm from "../components/SignupForm";
 import API from "../utils/API";
