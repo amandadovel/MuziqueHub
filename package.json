@@ -8,7 +8,6 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
@@ -36,9 +35,7 @@
     "mongoose": "^5.6.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "react": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^4.1.1",
