@@ -37,9 +37,7 @@ class Login extends Component {
             if (user.data.loggedIn) {
                 this.props.history.push("/favorites");
             }
-        }).catch(err => {
-            console.log(err);
-        });
+        })
     }
 
     render() {
