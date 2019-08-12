@@ -2,16 +2,10 @@ const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const passport = require("../../passport");
 const db = require("../../models");
-const isAuthenticated = require('../../passport/middleware/isAuthenticated')
-
-// Test route to retrieve user info
-router.get('/user', isAuthenticated, (req, res, next) => {
-    console.log('this is the user', req.user)
-    res.json(req.user)
-})
+const auth = require('../../passport/middleware/auth')
 
 // Signup User
-router.post("/signup",    [
+router.post("/signup", [
     // === signup validation ===
     check("username")
         .isLength({ min: 5 })
@@ -28,6 +22,7 @@ router.post("/signup",    [
     check("password")
         .isLength(8, 65)
         .withMessage("Password must be between 8-60 characters."),
+        // === strong password validation ===
         // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,"i")
         // .withMessage("Password must include a lowercase, uppercase, number, and a special character."),
     check("passwordConf").custom((value, { req }) => {
@@ -40,7 +35,7 @@ router.post("/signup",    [
 ], function(req, res) {
     // === validation error handling ===
     const errors = validationResult(req);
-    const error = errors.array().map(error => error.msg)
+    const error = errors.array().map(error => error.msg);
     if (!errors.isEmpty()) {
         return res.json({ error: error });
     }
@@ -64,7 +59,7 @@ router.post("/signup",    [
             });
         }
     });
-})
+});
 
 // Login User
 router.post("/login", passport.authenticate("local-login", {
@@ -73,14 +68,23 @@ router.post("/login", passport.authenticate("local-login", {
     failureFlash: true,
 }), function(req, res) {
     // === successful login handling ===
-    res.json({ user: req.user, loggedIn: true })
+    res.json({ user: req.user, loggedIn: true });
 });
+
+// Logout User
+router.get("/logout", auth.logout, (req, res, next) => {
+    res.json("Logout successful");
+});
+
+// Favorite route restricted to logged in users
+router.get("/favorites", auth.loggedIn, (req, res, next) => {
+    res.json({ user: req.user, loggedIn: true });
+})
 
 // Restricted route for unauthorized users
 router.get("/restricted", function(req, res) {
-    req.flash("error").map(err => {
-        res.send(err) 
-    });
-})
+    let message = req.flash("error")[0];
+    res.json({ message: message || "Not authorized to view this page" });
+});
 
 module.exports = router;

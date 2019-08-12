@@ -1,46 +1,52 @@
 import React, { Component } from "react";
+import { Row, Col } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import SearchBar from "../components/SearchBar";
-import VideoDetail from "../components/VideoDetail";
+import API from "../utils/API";
 
 class Favorites extends Component {
     state = {
-        videos: [],
-        selectedVideo: null
+        message: "",
+        loggedIn: false,
+        user: null,
     }
-    // handleSubmit = async (termFromSearchBar) => {
-    //     const response = await youtube.get('/search', {
-    //         params: {
-    //             q: termFromSearchBar
-    //         }
-    //     })
-    //     this.setState({
-    //         videos: response.data.items
-    //     })
-    // };
-    // handleVideoSelect = (video) => {
-    //     this.setState({selectedVideo: video})
-    // }
+
+    componentDidMount() {
+
+        API.isLoggedIn()
+        .then(user => {
+            console.log(user.data);
+            if (user.data.loggedIn) {
+                this.setState({
+                    message: `Welcome ${user.data.user.username}`,
+                    loggedIn: true,
+                    user: user.data.user
+                })
+            } else {
+                this.setState({
+                    message: user.data.message
+                })
+            }
+        })
+        .catch(err => console.log(err))
+    }
 
     render() {
+        console.log(this.state);
+        
         return (
             <>
-                <Jumbotron>
-                    <h1>Favorites</h1>
-                </Jumbotron>
-                <div className='ui container' style={{marginTop: '1em'}}>
-                    <SearchBar handleFormSubmit={this.handleSubmit}/>
-                    <div className='ui grid'>
-                        <div className="ui row">
-                            <div className="eleven wide column">
-                                <VideoDetail video={this.state.selectedVideo}/>
-                            </div>
-                            <div className="five wide column">
-                                {/* <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/> */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Row>
+                    <Col size="md-12">
+                        <Jumbotron>
+                            <h1>Favorites</h1>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="md-8">
+                        <h3 className="text-center">{ this.state.message }</h3>
+                    </Col>
+                </Row>
             </>
         )
     }
