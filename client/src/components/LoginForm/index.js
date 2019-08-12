@@ -35,13 +35,11 @@ const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, me
             >Login
             </button>
         </div>
-        { message.length ? (
+        { message ? (
             <>
-                { message.map(msg => (
-                    <div className="alert alert-danger my-2" key={ msg }>
-                        <span>{ msg }</span>
-                    </div>
-                ))}
+                <div className="alert alert-danger text-center mt-3 mb-0">
+                    <span>{ message }</span>
+                </div>
             </>
         ) : <div></div> }
     </form>

@@ -1,20 +1,17 @@
 const Strategy = require("passport-local").Strategy;
 const db = require("../models");
 
-const LoginStrategy = new Strategy((username, password, done) => {
+const LoginStrategy = new Strategy( (username, password, done) => {
     db.User.findOne({ username: username }).then((user, err) => {
         if (err) {
             return done(err, null);
         }
-
         if (!user) {
-            return done("Username or Password not valid", null);
+            return done(null, false, "Invalid Username or Password");
         }
-
         if (!user.validatePassword(password, user.password)) {
-            return done("Username or Password not valid", null);
+            return done(null, false, "Invalid Username or Password");
         }
-        delete user.password;
         return done(null, user);
     });  
 });

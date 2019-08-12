@@ -2,9 +2,12 @@ const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const passport = require("../../passport");
 const db = require("../../models");
+const auth = require("../../passport/middleware/auth");
 
+// Signup User
 router.post("/signup",
     [
+        // === signup validation ===
         check("username")
             .isLength({ min: 5 })
             .withMessage("Username must be between 5-15 characters"),
@@ -20,30 +23,33 @@ router.post("/signup",
         check("password")
             .isLength(8, 65)
             .withMessage("Password must be between 8-60 characters."),
+        // === strong password validation ===
         // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,"i")
         // .withMessage("Password must include a lowercase, uppercase, number, and a special character."),
-        check("passwordConf").custom((value, { req }) => {
-            if (value !== req.body.password) {
-                return Promise.reject("Passwords do not match.");
-            } else {
-                return value;
-            }
-        })
+        check("passwordConf")
+            .custom((value, { req }) => {
+                if (value !== req.body.password) {
+                    return Promise.reject("Passwords do not match.");
+                } else if (value === "") {
+                    return Promise.reject("Missing credentials");
+                } else {
+                    return value;
+                }
+            }),
     ],
-    (req, res, next) => {
+    function(req, res) {
+        // === validation error handling ===
         const errors = validationResult(req);
+        const error = errors.array().map(error => error.msg);
         if (!errors.isEmpty()) {
-            return res.json({
-                errors: errors.array().map(error => {
-                    return error.msg;
-                })
-            });
+            return res.json({ error: error });
         }
+        // === user database handling ===
         const { username, email, password } = req.body;
         db.User.findOne({ username: username }, (err, user) => {
             if (err) throw err;
             if (user) {
-                return res.json("User already exists");
+                return res.json({ error: ["User already exists"] });
             }
             if (!user) {
                 let newUser = new db.User({
@@ -52,7 +58,7 @@ router.post("/signup",
                     password: password
                 });
                 newUser.password = newUser.generateHash(password);
-                newUser.save(err => {
+                newUser.save((err, inserted) => {
                     if (err) throw err;
                     res.redirect(307, "/api/users/login");
                 });
@@ -61,43 +67,30 @@ router.post("/signup",
     }
 );
 
-router.post("/login",
-    [
-        check("username")
-            .not()
-            .isEmpty()
-            .withMessage("Username field cannot be empty."),
-        check("password")
-            .not()
-            .isEmpty()
-            .withMessage("Password field cannot be empty.")
-    ],
-    (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.json({
-                errors: errors.array().map(error => {
-                    return error.msg;
-                })
-            });
-        }
-        passport.authenticate("local-login", (err, user, info) => {
-            if (err) {
-                return res.json({
-                    message: "Login Auth Err...",
-                    errors: [err],
-                    loggedIn: false
-                });
-            }
-            if (user) {
-                return res.json({
-                    message: "User is now authenticated!!",
-                    user: user,
-                    loggedIn: true
-                });
-            }
-        })(req, res, next);
-    }
-);
+// Login User
+router.post("/login", passport.authenticate("local-login", {
+    // === failed login handling ===
+    failureRedirect: "/api/users/restricted",
+    failureFlash: true
+}), function(req, res) {
+    // === successful login handling ===
+    res.json({ user: req.user, loggedIn: true });
+});
+
+// Logout User
+router.get("/logout", auth.logout, (req, res, next) => {
+    res.json("Logout successful");
+});
+
+// Favorite route restricted to logged in users
+router.get("/favorites", auth.loggedIn, (req, res, next) => {
+    res.json({ user: req.user, loggedIn: true });
+});
+
+// Restricted route for unauthorized users
+router.get("/restricted", function(req, res) {
+    let message = req.flash("error")[0];
+    res.json({ message: message || "Not authorized to view this page" });
+});
 
 module.exports = router;
