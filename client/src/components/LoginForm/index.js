@@ -35,7 +35,7 @@ const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, me
             >Login
             </button>
         </div>
-        { message.length ? (
+        { message ? (
             <>
                 <div className="alert alert-danger text-center mt-3 mb-0">
                     <span>{ message }</span>

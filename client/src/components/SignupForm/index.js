@@ -57,7 +57,7 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
             >Sign Up
             </button>
         </div>
-        { message.length ? (
+        { message ? (
             <>
                 { message.map(msg => (
                     <div className="alert alert-danger mt-3 mb-0" key={ msg }>
