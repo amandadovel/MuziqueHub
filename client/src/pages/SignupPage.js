@@ -42,7 +42,6 @@ class Signup extends Component {
             if (user.data.loggedIn) {
                 this.props.history.push("/favorites");
             }
-            console.log("Sign Up Data: ", user.data.error);
         }).catch(err => {
             console.log(err);
         })
