@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const passport = require("./passport");
 const session = require("express-session");
 const flash = require("connect-flash");
-const proxy = require('http-proxy-middleware');
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -31,11 +30,8 @@ if (process.env.NODE_ENV === "production") {
 // Routes
 app.use(routes);
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
-
-// Proxy server
-app.use(proxy('/api', { target: 'http://localhost:3001/', changeOrigin: true  }));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3db", { useCreateIndex: true, useNewUrlParser: true })
