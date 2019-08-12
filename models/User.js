@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -23,6 +24,14 @@ const UserSchema = new Schema({
         default: Date.now
     }
 });
+
+UserSchema.methods.generateHash = password => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+}
+
+UserSchema.methods.validatePassword = (password, encrypted) => {
+    return bcrypt.compareSync(password, encrypted)
+}
 
 const User = mongoose.model("User", UserSchema);
 

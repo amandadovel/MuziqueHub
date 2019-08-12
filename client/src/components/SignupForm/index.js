@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignupForm.css";
 
-const SignupForm = ({ username, email, password, passwordConf, handleInputChange, handleFormSubmit }) => (
+const SignupForm = ({ username, email, password, passwordConf, handleInputChange, handleFormSubmit , message }) => (
     <form>
         <div className="form-group">
             <label htmlFor="Username">Username</label>
@@ -57,6 +57,15 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
             >Sign Up
             </button>
         </div>
+        { message ? (
+            <>
+                { message.map(msg => (
+                    <div className="alert alert-danger mt-3 mb-0" key={ msg }>
+                        <span>{ msg }</span>
+                    </div>
+                )) }
+            </>
+        ) : <div></div> }
     </form>
 );
 

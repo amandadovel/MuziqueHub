@@ -1,32 +1,96 @@
 const router = require("express").Router();
+const { check, validationResult } = require("express-validator");
 const passport = require("../../passport");
+const db = require("../../models");
+const auth = require("../../passport/middleware/auth");
 
-// Matches with "/api/users/signup"
-router.post("/signup", (req, res, next) => {
-    passport.authenticate("local-signup", (err, user, info) => {
-        console.log(err);
-        console.log(user);
-        console.log(info);
-        
-        if (err) {
-            return res.json({ message: err || "Oops something happened..." });
-        } else if (!err) {
-            return res.json(user);
+// Signup User
+router.post("/signup",
+    [
+        // === signup validation ===
+        check("username")
+            .isLength({ min: 5 })
+            .withMessage("Username must be between 5-15 characters"),
+        check("email")
+            .isEmail()
+            .withMessage("Must use a valid email address")
+            .custom(async email => {
+                const user = await db.User.findOne({ email: email });
+                if (user) {
+                    return Promise.reject("Email already in use");
+                }
+            }),
+        check("password")
+            .isLength(8, 65)
+            .withMessage("Password must be between 8-60 characters."),
+        // === strong password validation ===
+        // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,"i")
+        // .withMessage("Password must include a lowercase, uppercase, number, and a special character."),
+        check("passwordConf")
+            .custom((value, { req }) => {
+                if (value !== req.body.password) {
+                    return Promise.reject("Passwords do not match.");
+                } else if (value === "") {
+                    return Promise.reject("Missing credentials");
+                } else {
+                    return value;
+                }
+            }),
+    ],
+    function(req, res) {
+        // === validation error handling ===
+        const errors = validationResult(req);
+        const error = errors.array().map(error => error.msg);
+        if (!errors.isEmpty()) {
+            return res.json({ error: error });
         }
-    })(req, res, next);
+        // === user database handling ===
+        const { username, email, password } = req.body;
+        db.User.findOne({ username: username }, (err, user) => {
+            if (err) throw err;
+            if (user) {
+                return res.json({ error: ["User already exists"] });
+            }
+            if (!user) {
+                let newUser = new db.User({
+                    username: username,
+                    email: email,
+                    password: password
+                });
+                newUser.password = newUser.generateHash(password);
+                newUser.save((err, inserted) => {
+                    if (err) throw err;
+                    res.redirect(307, "/api/users/login");
+                });
+            }
+        });
+    }
+);
+
+// Login User
+router.post("/login", passport.authenticate("local-login", {
+    // === failed login handling ===
+    failureRedirect: "/api/users/restricted",
+    failureFlash: true
+}), function(req, res) {
+    // === successful login handling ===
+    res.json({ user: req.user, loggedIn: true });
 });
 
-// Matches with "/api/users/login"
-router.post("/login", (req, res, next) => {
+// Logout User
+router.get("/logout", auth.logout, (req, res, next) => {
+    res.json("Logout successful");
+});
 
-    passport.authenticate("local-login", (err, user, info) => {
-        if (err) {
-            return res.status(500).json({
-                message: err || "Oops something happened...",
-            });
-        }
-        return res.json(user);
-    })(req, res, next);
+// Favorite route restricted to logged in users
+router.get("/favorites", auth.loggedIn, (req, res, next) => {
+    res.json({ user: req.user, loggedIn: true });
+});
+
+// Restricted route for unauthorized users
+router.get("/restricted", function(req, res) {
+    let message = req.flash("error")[0];
+    res.json({ message: message || "Not authorized to view this page" });
 });
 
 module.exports = router;

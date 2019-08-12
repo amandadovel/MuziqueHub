@@ -7,8 +7,8 @@ export const Container = ({ fluid, children }) => (
     </div>
 );
 
-export const Row =({ fluid, children }) => (
-    <div className={`row${fluid ? "-fluid" : ""}`}>
+export const Row =({ center, children }) => (
+    <div className={`row${center ? " justify-content-center" : ""}`}>
         {children}
     </div>
 );
