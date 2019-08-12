@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const axios = require("axios");
 require('dotenv').config();
-const db = require("../../models/Artist")
+// const db = require("../../models/Artist")
 
 // Matches with "/api/artist/search"
 router.get("/search", (req, res) => {
