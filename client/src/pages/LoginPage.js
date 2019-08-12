@@ -31,7 +31,7 @@ class Login extends Component {
             if (user.data) {
                 this.setState({
                     loggedIn: false,
-                    message: user.data
+                    message: user.data.message
                 });
             }
             if (user.data.loggedIn) {
