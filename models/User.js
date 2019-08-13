@@ -22,7 +22,11 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    favorites: [{
+        type: Schema.Types.ObjectId,
+        ref: "Favroites"
+    }]
 });
 
 UserSchema.methods.generateHash = password => {
