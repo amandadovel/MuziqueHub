@@ -40,6 +40,27 @@ class ArtistSearch extends Component {
         this.getArtistInfo();
     };
 
+  // Method calls post request to create artist data obj and save it in db
+  handleSave = id => {
+    const artist = this.state.artists.find(artist => artist.idArtist === id);
+    API.saveArtist({
+        id: artist.idArtist,
+        artistName: artist.strArtist,
+        label: artist.strLabel,
+        genre: artist.strGenre,
+        website: artist.strWebsite,
+        facebook: artist.strFacebook,
+        twitter: artist.strTwitter,
+        biography: artist.strBiographyEN,
+        country: artist.strCountry ,
+        artistThumb: artist.strArtistThumb ,
+        artistLogo: artist.strArtistLogo,
+        artistFanart: artist.strArtistFanart
+       
+    })
+    .then(() => this.getArtistInfo())
+};
+
     render() {
         return (
             <>
@@ -78,7 +99,7 @@ class ArtistSearch extends Component {
                                         label={artist.strLabel}
                                         genre={artist.strGenre}
                                         website={artist.strWebsite}
-                                        facebook={artist.strFacebook}
+                                        faceartist={artist.strFaceartist}
                                         twitter={artist.strTwitter}
                                         biography={artist.strBiographyEN}
                                         country={artist.strCountry}
