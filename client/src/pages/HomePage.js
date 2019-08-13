@@ -44,7 +44,7 @@ class ArtistSearch extends Component {
   handleSave = id => {
     const artist = this.state.artists.find(artist => artist.idArtist === id);
     API.saveArtist({
-        id: artist.idArtist,
+        artistId: artist.idArtist,
         artistName: artist.strArtist,
         label: artist.strLabel,
         genre: artist.strGenre,
@@ -108,6 +108,11 @@ class ArtistSearch extends Component {
                                         fanart={artist.strArtistFanart}
                                         fanart2={artist.strArtistFanart2}
                                         fanart3={artist.strArtistFanart3}
+                                        Button={() => (
+                                            <button className="btn btn-success" onClick= { () => this.handleSave(artist.idArtist) }>
+                                                Save
+                                            </button>
+                                        )}
                                     >
                                     </Artist>
                                 )) }
