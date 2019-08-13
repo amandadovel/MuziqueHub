@@ -3,5 +3,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: gray;
+  background: rgba(0, 0, 0, 0.692);
+  background: url(../../client/src/images/red-smoke.jpg) center center fixed;
+  background-size: cover;
 }
+
