@@ -33,14 +33,13 @@ class Signup extends Component {
             passwordConf: this.state.passwordConf
         })
         .then(user => {
-            if (user.data.error) {
+            if (user.data.loggedIn) {
+                this.props.history.push("/favorites");
+            } else {
                 this.setState({
                     loggedIn: false,
                     message: user.data.error
                 });
-            }
-            if (user.data.loggedIn) {
-                this.props.history.push("/favorites");
             }
         }).catch(err => {
             console.log(err);

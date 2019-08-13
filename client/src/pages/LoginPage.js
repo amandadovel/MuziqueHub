@@ -28,14 +28,13 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(user => {
-            if (user.data) {
+            if (user.data.loggedIn) {
+                this.props.history.push("/favorites");
+            } else {
                 this.setState({
                     loggedIn: false,
                     message: user.data.message
                 });
-            }
-            if (user.data.loggedIn) {
-                this.props.history.push("/favorites");
             }
         }).catch(err => {
             console.log(err);
