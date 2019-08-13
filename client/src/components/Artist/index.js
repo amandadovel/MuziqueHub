@@ -6,12 +6,12 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
     <ListItem>
         <Row className="flex-wrap-reverse">
             <Col size="md-12">
-
-                { logo ? (
-                <img src={logo} className="logo mx-auto d-block" alt="logo"></img>
-                ) : <div></div> }
+                {logo ? (
+                    <img src={logo} className="logo mx-auto d-block" alt="logo"></img>
+                ) : <div></div>}
 
                 <h1 className="artist-name text-center mt-3">{artist}</h1>
+
                 <div className="font-italic text-center">
                     <small>{country}</small>
                 </div>
@@ -20,30 +20,57 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 <h2 className="genre text-center">{genre}</h2>
                 <br></br>
 
-                { label ? (
-                <h3 className="record-label text-center">Record Label: {label}</h3>
-                ): <div></div> }
+                {label ? (
+                    <h3 className="record-label text-center">Record Label: {label}</h3>
+                ) : <div></div>}
                 <br></br>
+            </Col>
+        </Row>
 
+        <Row>
+            <Col size="md-12">
                 <div className="media-links d-flex justify-content-around">
                     <a target="_blank" rel="noopener noreferrer" href={website}>Website</a>
                     <a target="_blank" rel="noopener noreferrer" href={facebook}>Facebook</a>
                     <a target="_blank" rel="noopener noreferrer" href={twitter}>Twitter</a>
                 </div>
                 <br></br>
-
-                <img src={thumbnail} alt="thumbnail" className="img-fluid rounded mx-auto d-block"></img>
-                <br></br>
-
-                <p className="biography">{biography}</p>
-
-                <img src={fanart} alt="fanart" className="img-fluid rounded mt-4"></img>
-                <img src={fanart2} alt="fanart2" className="img-fluid rounded mt-4"></img>
-                <img src={fanart3} alt="fanart3" className="img-fluid rounded mt-4"></img>
-                
             </Col>
         </Row>
+
+        <Row>
+            <Col size="md-12">
+                <img src={thumbnail} alt="thumbnail" className="img-fluid rounded mx-auto d-block"></img>
+                <br></br>
+                <p className="biography">{biography}</p>
+            </Col>
+        </Row>
+
+        <Row>
+            <Col size="md-12">
+                {fanart ? (
+                    <img src={fanart} alt="fanart" className="img-fluid rounded mt-4"></img>
+                ) : <div></div>}
+            </Col>
+        </Row>
+
+        <Row>
+            <Col size="md-12">
+                {fanart2 ? (
+                    <img src={fanart2} alt="fanart" className="img-fluid rounded mt-4"></img>
+                ) : <div></div>}
+            </Col>
+        </Row>
+
+        <Row>
+            <Col size="md-12">
+                {fanart3 ? (
+                    <img src={fanart3} alt="fanart" className="img-fluid rounded mt-4"></img>
+                ) : <div></div>}
+            </Col>
+        </Row>
+
     </ListItem>
 )
-        
+
 export default Artist;

@@ -1,19 +1,36 @@
 .navbar {
     position: sticky;
-    background: #e9ecef;
     margin-bottom: 1.25em;
+    background:rgba(0, 0, 0, 0.562);
 }
 
-.navbar-brand,
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    text-shadow: red 1px 1px 11px;
+    font-family: 'Barriecito', cursive;
+    letter-spacing: 2px;
+    font-size: 23px;
+
+}
+
 .nav-link {
-    color: rgb(88, 88, 88);
+    color: rgba(255, 255, 255, 0.701);
+    transition: all .2s ease-in-out; 
+    font-family: 'DM Serif Text', serif;
+
 }
 
 .active {
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
+.nav-link:hover {
+    color: white;
+    transform: scale(1.5);
+    text-shadow: black 1px 1px 1px;
+}
 .active:hover {
-    color: black;
-
+    color: rgb(228, 19, 19);
 }
+

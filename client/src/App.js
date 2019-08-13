@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "./components/Grid";
 import Navbar from "./components/Navbar";
 import Favorites from "./pages/FavoritesPage";
-import Videos from "./pages/VideoPage";
 import Home from "./pages/HomePage";
 import Signup from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
@@ -19,7 +18,6 @@ const App = () => (
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/favorites" component={Favorites} />
-                    <Route path="/videos" component={Videos} />
                     <Route component={NotFound} />
                 </Switch>
             </Container>
