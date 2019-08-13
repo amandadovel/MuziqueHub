@@ -25,5 +25,9 @@ export default {
     // === send params to retrieve data from songkick api ===
     getSongKickInfo: (artistName) => {
         return axios.get("/api/songkick/search", { params: { artistName }});
+    },
+    // === save artist to database
+    saveArtist: (artistData) => {
+        return axios.post("/api/artist", artistData);
     }
 };

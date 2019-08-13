@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const axios = require("axios");
 require('dotenv').config();
-const db = require("../../models/Favorites")
+const db = require("../../models/");
 const apiKey = process.env.REACT_APP_AUDIODB_APIKEY;
 
 // Matches with "/api/artist/search"
 router.get("/search", (req, res) => {
-        const artistName = req.query.artistName.replace(/\s/g, "+");
+    const artistName = req.query.artistName.replace(/\s/g, "+");
 
     axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/search.php?s=${artistName}`)
         .then(results =>
@@ -38,7 +38,16 @@ router.get("/videos", (req, res) => {
             .then(mappedResults => res.send(mappedResults))
     })
     .catch(err => res.status(422).json(err));
-})
+});
+
+router.post("/", (req, res) => {
+    db.Favorites
+        .create(req.body)
+        .then(dbArtist => res.json(dbArtist))
+        .catch(err => res.status(422).json(err))
+});
+
+
 
 
 module.exports = router;

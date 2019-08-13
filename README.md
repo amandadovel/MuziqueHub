@@ -2,4 +2,4 @@
 
 ### Demo
 
-<a href="https://trilogy-project-3.herokuapp.com/">Project-3</a>
+<a href="https://project-3-music-app.herokuapp.com">Project-3</a>

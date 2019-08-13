@@ -2,7 +2,7 @@ import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 
-const Artist = ({ artist, label, genre, website, facebook, twitter, biography, country, thumbnail, logo, fanart, fanart2, fanart3 }) => (
+const Artist = ({ artist, label, genre, website, facebook, twitter, biography, country, thumbnail, logo, fanart, fanart2, fanart3, Button }) => (
     <ListItem>
         <Row className="flex-wrap-reverse">
             <Col size="md-12">
@@ -67,6 +67,12 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 {fanart3 ? (
                     <img src={fanart3} alt="fanart" className="img-fluid rounded mt-4"></img>
                 ) : <div></div>}
+            </Col>
+        </Row>
+
+        <Row>
+            <Col size="md-12">
+                <Button />
             </Col>
         </Row>
 
