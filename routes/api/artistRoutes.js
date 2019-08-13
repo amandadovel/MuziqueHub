@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const axios = require("axios");
 require('dotenv').config();
-const db = require("../../models/Artist")
+const db = require("../../models/Favorites")
 const apiKey = process.env.REACT_APP_AUDIODB_APIKEY;
 
 // Matches with "/api/artist/search"
