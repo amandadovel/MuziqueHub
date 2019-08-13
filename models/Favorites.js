@@ -24,6 +24,6 @@ const favoritesSchema = new Schema({
     strArtistFanart: String
 });
 
-const Artist = mongoose.model("Favorites", favoritesSchema);
+const Favorites = mongoose.model("Favorites", favoritesSchema);
 
-module.exports = Artist;
+module.exports = Favorites;
