@@ -70,7 +70,7 @@ class ArtistSearch extends Component {
                             <h1 className="text-center">
                                 <strong>Artist Search</strong>
                             </h1>
-                            <h2 className="text-center">Search and save the artists you love!</h2>
+                            <h2 className="text-center start-message">Search and save the artists you love!</h2>
                         </Jumbotron>
                     </Col>
                 </Row>
