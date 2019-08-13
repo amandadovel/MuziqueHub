@@ -9,7 +9,6 @@ const Navbar = () => (
             <div className="navbar-brand">Music App</div>
             <NavLink className="nav-link" exact to="/">Home</NavLink>
             <NavLink className="nav-link" exact to="/favorites" activeClassName="active">Favorites</NavLink>
-            <NavLink className="nav-link" exact to="/videos" activeClassName="active">Videos</NavLink>
             <NavLink className="nav-link" exact to="/login" activeClassName="active">Login</NavLink>
             <NavLink className="nav-link" exact to="/signup" activeClassName="active">Signup</NavLink>
         </div>
