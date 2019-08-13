@@ -30,9 +30,9 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
         <Row>
             <Col size="md-12">
                 <div className="media-links d-flex justify-content-around">
-                    <a target="_blank" rel="noopener noreferrer" href={website}>Website</a>
-                    <a target="_blank" rel="noopener noreferrer" href={facebook}>Facebook</a>
-                    <a target="_blank" rel="noopener noreferrer" href={twitter}>Twitter</a>
+                    <a className="links" target="_blank" rel="noopener noreferrer" href={website}>Website</a>
+                    <a className="links" target="_blank" rel="noopener noreferrer" href={facebook}>Facebook</a>
+                    <a className="links" target="_blank" rel="noopener noreferrer" href={twitter}>Twitter</a>
                 </div>
                 <br></br>
             </Col>

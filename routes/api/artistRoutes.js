@@ -6,71 +6,38 @@ const apiKey = process.env.REACT_APP_AUDIODB_APIKEY;
 
 // Matches with "/api/artist/search"
 router.get("/search", (req, res) => {
-    const artistName = req.query.artistName.replace(/\s/g, "+");
+        const artistName = req.query.artistName.replace(/\s/g, "+");
+
     axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/search.php?s=${artistName}`)
         .then(results =>
-            results.data.artists.map(result => {
-                let artistData = {
-                    artistId: result.idArtist,
-                    artistName: result.strArtist,
-                    label: result.strLabel,
-                    genre: result.strGenre,
-                    website: result.strWebsite,
-                    facebook: result.strFacebook,
-                    twitter: result.strTwitter,
-                    bio: result.strBiographyEN,
-                    country: result.strCountry,
-                    thumbnail: result.strArtistThumb,
-                    logo: result.strArtistLogo,
-                    fanart: result.strArtistFanart
-                }
-                return artistData;
-            })
-            .then(mappedResults => {
-
-            let artistId = mappedResults[0].artistId; 
-            axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
-            .then(result => res.send(result.data.mvids))
-        })
-        .catch(err => res.status(422).json(err)))
+            results.data.artists.filter(result =>
+                result.idArtist &&
+                result.strArtist
+            )
+        )
+        .then(filteredResults => res.json(filteredResults))
+        .catch(err => res.status(422).json(err));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.get("/videos", (req, res) => {
     // const artistName = req.query.artistName.replace(/\s/g, "+");
-    axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/search.php?s=coldplay`)
-        .then(results => results.data.artists
-            .map(artist =>
-                artist.idArtist
-            )
+    
+    axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/search.php?s=${artistName}`)
+    .then(results => results.data.artists
+        .map(artist =>
+            artist.idArtist
         )
-        .then(mappedResults => {
-            let artistId = mappedResults[0]; 
-            axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
-            .then(results => results.data.mvids
-                .map(videos => 
-                    videos.strMusicVid)
-                )
-                .then(mappedResults => res.send(mappedResults))
-        })
-        .catch(err => res.status(422).json(err));
+    )
+    .then(mappedResults => {
+        let artistId = mappedResults[0]; 
+        axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
+        .then(results => results.data.mvids
+            .map(videos => 
+                videos.strMusicVid)
+            )
+            .then(mappedResults => res.send(mappedResults))
+    })
+    .catch(err => res.status(422).json(err));
 })
 
 
