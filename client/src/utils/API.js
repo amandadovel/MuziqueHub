@@ -26,6 +26,10 @@ export default {
     saveArtist: (artistData) => {
         return axios.post("/api/artist", artistData);
     },
+    // === get all favorites from database ===
+    getFavorites: () => {
+        return axios.get("/api/favorites/all")
+    },
     // === send params to retrieve data from songkick api ===
     getSongKickInfo: (artistName) => {
         return axios.get("/api/songkick/search", { params: { artistName }});

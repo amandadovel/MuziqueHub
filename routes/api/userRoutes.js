@@ -37,7 +37,7 @@ router.post("/signup",
                 }
             }),
     ],
-    function(req, res) {
+    (req, res) => {
         // === validation error handling ===
         const errors = validationResult(req);
         const error = errors.array().map(error => error.msg);
@@ -72,7 +72,7 @@ router.post("/login", passport.authenticate("local-login", {
     // === failed login handling ===
     failureRedirect: "/api/users/restricted",
     failureFlash: true
-}), function(req, res) {
+}), (req, res) => {
     // === successful login handling ===
     res.json({ user: req.user, loggedIn: true });
 });
