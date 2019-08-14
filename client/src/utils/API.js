@@ -22,12 +22,12 @@ export default {
     getArtistInfo: (artistName) => {
         return axios.get("/api/artist/search", { params: { artistName } });
     },
+    // === save artist to database
+    saveArtist: (artistData) => {
+        return axios.post("/api/artist", artistData);
+    },
     // === send params to retrieve data from songkick api ===
     getSongKickInfo: (artistName) => {
         return axios.get("/api/songkick/search", { params: { artistName }});
     },
-    // === save artist to database
-    saveArtist: (artistData) => {
-        return axios.post("/api/artist", artistData);
-    }
 };
