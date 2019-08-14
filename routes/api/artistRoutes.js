@@ -36,23 +36,23 @@ router.get("/search", (req, res) => {
             let videos = [];
             axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
                 .then(results => {
+                    // If music videos available create video object and nest it within the artist object
                     if (results.data.mvids) {
-                        // If music videos available create video object and nest it within the artist object
                         results.data.mvids.map(result => {
                             let video = {
                                 vidLink: result.strMusicVid,
                                 vidThumb: result.strTrackThumb,
                                 vidTrack: result.strTrack
                             }
-                            // modification for iframe compatability
+                            // === modification for iframe compatability ===
                             video.vidLink = video.vidLink.replace("watch?v=", "embed/").replace("http:", "https:")
                             videos.push(video);
                             artistData.musicVideos = videos;
                             return artistData;              
                         })
                         res.json([artistData]);
+                    // If no music videos available send artist data to front end
                     } else {
-                        // If no music videos available send artist data to front end
                         res.json([artistData]);
                     }
                 })
@@ -62,6 +62,8 @@ router.get("/search", (req, res) => {
 
 // Save artist to the database
 router.post("/", (req, res) => {
+    console.log("Req.Body: ", req.body);
+    console.log("Req.User: ", req.user);
     db.Favorites
         .create(req.body)
         .then(dbArtist => res.json(dbArtist))
