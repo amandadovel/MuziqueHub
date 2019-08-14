@@ -90,7 +90,7 @@ router.get("/favorites", auth.loggedIn, (req, res, next) => {
 // Restricted route for unauthorized users
 router.get("/restricted", function(req, res) {
     let message = req.flash("error")[0];
-    res.json({ message: message || "Not authorized to view this page" });
+    res.json({ message: message || "Signup or login to save Favorites" });
 });
 
 module.exports = router;

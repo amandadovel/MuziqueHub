@@ -40,26 +40,27 @@ class ArtistSearch extends Component {
         this.getArtistInfo();
     };
 
-  // Method calls post request to create artist data obj and save it in db
-  handleSave = id => {
-    const artist = this.state.artists.find(artist => artist.idArtist === id);
-    API.saveArtist({
-        artistId: artist.idArtist,
-        artistName: artist.strArtist,
-        label: artist.strLabel,
-        genre: artist.strGenre,
-        website: artist.strWebsite,
-        facebook: artist.strFacebook,
-        twitter: artist.strTwitter,
-        biography: artist.strBiographyEN,
-        country: artist.strCountry ,
-        artistThumb: artist.strArtistThumb ,
-        artistLogo: artist.strArtistLogo,
-        artistFanart: artist.strArtistFanart
-       
-    })
-    .then(() => this.getArtistInfo())
-};
+    handleSave = id => {
+        const artist = this.state.artists.find(artist => artist.artistId === id);
+        API.saveArtist({
+            artistId: artist.artistId,
+            artistName: artist.artistName,
+            label: artist.label,
+            genre: artist.genre,
+            website: artist.website,
+            facebook: artist.facebook,
+            twitter: artist.twitter,
+            biography: artist.biography,
+            country: artist.country ,
+            artistThumb: artist.artistThumb ,
+            artistLogo: artist.artistLogo,
+            artistFanart: artist.artistFanart,
+            artistFanart2: artist.artistFanart2,
+            artistFanart3: artist.artistFanart3,
+            musicVideos: artist.musicVideos
+        })
+        .then(() => this.getArtistInfo())
+    };
 
     render() {
         return (
@@ -89,27 +90,28 @@ class ArtistSearch extends Component {
 
                 <Row>
                     <Col size="md-12">
-                        { this.state.artists ? (
+                        { this.state.artists.length ? (
                         <Card title="Results">
                             <List>
                                 { this.state.artists.map(artist => (
                                     <Artist
-                                        key={artist.idArtist}
-                                        artist={artist.strArtist}
-                                        label={artist.strLabel}
-                                        genre={artist.strGenre}
-                                        website={artist.strWebsite}
-                                        faceartist={artist.strFaceartist}
-                                        twitter={artist.strTwitter}
-                                        biography={artist.strBiographyEN}
-                                        country={artist.strCountry}
-                                        thumbnail={artist.strArtistThumb}
-                                        logo={artist.strArtistLogo}
-                                        fanart={artist.strArtistFanart}
-                                        fanart2={artist.strArtistFanart2}
-                                        fanart3={artist.strArtistFanart3}
+                                        key={artist.artistId}
+                                        artist={artist.artistName}
+                                        label={artist.label}
+                                        genre={artist.genre}
+                                        website={artist.website}
+                                        faceartist={artist.facebook}
+                                        twitter={artist.twitter}
+                                        biography={artist.biography}
+                                        country={artist.country}
+                                        thumbnail={artist.artistThumb}
+                                        logo={artist.artistLogo}
+                                        fanart={artist.artistFanart}
+                                        fanart2={artist.artistFanart2}
+                                        fanart3={artist.artistFanart3}
+                                        musicVidLink={artist.musicVideos}
                                         Button={() => (
-                                            <button className="btn btn-success" onClick= { () => this.handleSave(artist.idArtist) }>
+                                            <button className="btn btn-success" onClick= { () => this.handleSave(artist.artistId) }>
                                                 Save
                                             </button>
                                         )}

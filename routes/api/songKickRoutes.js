@@ -6,7 +6,6 @@ require("dotenv").config();
 router.get("/search" , (req, res) => {
     // const artistName = req.query.artistName.replace(/\s/g, "+");
     const apiKey = process.env.REACT_APP_SONGKICK_KEY;
-    
     axios.get(`https://api.songkick.com/api/3.0/events.json?artist_name=bassnectar&per_page=10&apikey=${apiKey}`)
         .then(results => 
             results.data.resultsPage.results.event.map(result => {
