@@ -44,7 +44,8 @@ router.get("/search", (req, res) => {
                                 vidThumb: result.strTrackThumb,
                                 vidTrack: result.strTrack
                             }
-                            video.vidLink = video.vidLink.replace("watch?v=", "embed/") // modification for iframe compatability
+                            // modification for iframe compatability
+                            video.vidLink = video.vidLink.replace("watch?v=", "embed/").replace("http:", "https:")
                             videos.push(video);
                             artistData.musicVideos = videos;
                             return artistData;              

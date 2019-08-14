@@ -63,6 +63,8 @@ class ArtistSearch extends Component {
     };
 
     render() {
+        console.log(this.state);
+        
         return (
             <>
                 <Row>
