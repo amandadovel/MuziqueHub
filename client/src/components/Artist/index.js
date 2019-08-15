@@ -2,7 +2,7 @@ import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 
-const Artist = ({ artist, label, genre, website, facebook, twitter, biography, country, thumbnail, logo, fanart, fanart2, fanart3, Button }) => (
+const Artist = ({ artist, label, genre, website, facebook, twitter, biography, country, thumbnail, logo, fanart, fanart2, fanart3, Button, musicVidLink }) => (
     <ListItem>
         <Row className="flex-wrap-reverse">
             <Col size="md-12">
@@ -72,7 +72,22 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
 
         <Row>
             <Col size="md-12">
-                <Button />
+                {musicVidLink ? (
+                    <div className ="d-flex flex-wrap justify-content-center">
+                        {musicVidLink.map(item => (
+                            <iframe className="p-2 my-3 mx-1" src={item.vidLink} title="myframe" key={item.vidLink} allowFullScreen={true}></iframe>
+                        ))}
+                    </div>
+                ) : <div></div>}
+              
+            </Col>
+        </Row>
+
+        <Row>
+            <Col size="md-12">
+                <div className="text-center">
+                    <Button />
+                </div>
             </Col>
         </Row>
 

@@ -48,11 +48,11 @@ class Login extends Component {
                     <Col size="md-6">
                         <Card title="Login Form">
                             <LoginForm 
-                                handleInputChange={ this.handleInputChange }
-                                handleFormSubmit={ this.handleFormSubmit }
-                                username={ this.state.username }
-                                password={ this.state.password }
-                                message= { this.state.message }
+                                handleInputChange={this.handleInputChange}
+                                handleFormSubmit={this.handleFormSubmit}
+                                username={this.state.username}
+                                password={this.state.password}
+                                message= {this.state.message}
                             />
                         </Card>
                     </Col>

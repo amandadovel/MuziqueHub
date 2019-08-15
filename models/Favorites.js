@@ -17,11 +17,14 @@ const favoritesSchema = new Schema({
     website: String,
     facebook: String,
     twitter: String,
-    biographyEN: String,
+    biography: String,
     country: String,
     artistThumb: String,
     artistLogo: String,
-    artistFanart: String
+    artistFanart: String,
+    artistFanart2: String,
+    artistFanart3: String,
+    musicVideos: [Object]
 });
 
 const Favorites = mongoose.model("Favorites", favoritesSchema);

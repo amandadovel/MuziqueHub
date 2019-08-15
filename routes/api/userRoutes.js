@@ -37,7 +37,7 @@ router.post("/signup",
                 }
             }),
     ],
-    function(req, res) {
+    (req, res) => {
         // === validation error handling ===
         const errors = validationResult(req);
         const error = errors.array().map(error => error.msg);
@@ -72,7 +72,7 @@ router.post("/login", passport.authenticate("local-login", {
     // === failed login handling ===
     failureRedirect: "/api/users/restricted",
     failureFlash: true
-}), function(req, res) {
+}), (req, res) => {
     // === successful login handling ===
     res.json({ user: req.user, loggedIn: true });
 });
@@ -90,7 +90,7 @@ router.get("/favorites", auth.loggedIn, (req, res, next) => {
 // Restricted route for unauthorized users
 router.get("/restricted", function(req, res) {
     let message = req.flash("error")[0];
-    res.json({ message: message || "Not authorized to view this page" });
+    res.json({ message: message || "Signup or login to save Favorites" });
 });
 
 module.exports = router;
