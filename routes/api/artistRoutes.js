@@ -37,9 +37,12 @@ router.get("/search", (req, res) => {
             axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
                 .then(results => {
                     // If music videos available create video object and nest it within the artist object
+                    console.log(results.data.mvids);
+                    
                     if (results.data.mvids) {
                         results.data.mvids.map(result => {
                             let video = {
+                                vidId: result.idTrack,
                                 vidLink: result.strMusicVid,
                                 vidThumb: result.strTrackThumb,
                                 vidTrack: result.strTrack
@@ -60,14 +63,6 @@ router.get("/search", (req, res) => {
         .catch(err => res.status(422).json(err));
 });
 
-// Save artist to the database
-router.post("/", (req, res) => {
-    console.log("Req.Body: ", req.body);
-    console.log("Req.User: ", req.user);
-    db.Favorites
-        .create(req.body)
-        .then(dbArtist => res.json(dbArtist))
-        .catch(err => res.status(422).json(err))
-});
+
 
 module.exports = router;

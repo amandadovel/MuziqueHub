@@ -21,6 +21,12 @@
 
 }
 
+.nav-message {
+    align-self: center;
+    font-family: 'Barriecito', cursive;
+    text-shadow: red 1px 1px 11px;
+}
+
 .active {
     color: white;
 }

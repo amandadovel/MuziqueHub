@@ -1,7 +1,5 @@
 import React from "react";
 
-// Function for searching for artists form
-
 const ArtistForm = ({ artistName, handleInputChange, handleFormSubmit }) => (
     <form>
         <div className="form-group">

@@ -6,6 +6,7 @@ import Favorites from "./pages/FavoritesPage";
 import Home from "./pages/HomePage";
 import Signup from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
+import Concerts from "./pages/ConcertsPage";
 import NotFound from "./pages/NotFound";
 import ImageUpload from "./pages/ImageUpload";
 
@@ -19,7 +20,7 @@ const App = () => (
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/favorites" component={Favorites} />
-                    <Route path="/image" component={ImageUpload} />
+                    <Route path="/Concerts" component={Concerts} />
                     <Route component={NotFound} />
                 </Switch>
             </Container>

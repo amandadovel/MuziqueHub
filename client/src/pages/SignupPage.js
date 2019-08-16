@@ -34,7 +34,7 @@ class Signup extends Component {
         })
         .then(user => {
             if (user.data.loggedIn) {
-                this.props.history.push("/favorites");
+                window.location.href = '/favorites';
             } else {
                 this.setState({
                     loggedIn: false,

@@ -24,8 +24,8 @@ const UserSchema = new Schema({
         default: Date.now
     },
     favorites: [{
-        type: Schema.Types.ObjectId,
-        ref: "Favroites"
+        type: Object,
+        ref: "Favorites"
     }]
 });
 
