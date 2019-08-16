@@ -45,6 +45,7 @@ class Navbar extends Component  {
                 <div className="d-flex w-100">
                     <div className="navbar-brand">Music App</div>
                     <NavLink className="nav-link" exact to="/">Home</NavLink>
+                    <NavLink className="nav-link" exact to="/Concerts">Concerts</NavLink>
                     <NavLink className="nav-link mr-auto" exact to="/favorites" activeClassName="active">Favorites</NavLink>
                         { this.state.loggedIn ? (
                             <>
