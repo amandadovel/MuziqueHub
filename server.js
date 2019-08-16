@@ -1,5 +1,7 @@
+require("dotenv").config();
 // Dependencies
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const passport = require("./passport");
 const session = require("express-session");
@@ -8,20 +10,26 @@ const path = require("path");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const AWS = require("aws-sdk");
-const bluebird = require("bluebird");
-require ("dotenv").config();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(fileUpload);
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 
 // Passport
 app.use(flash());
-app.use(session({ 
+app.use(session({
     secret: "szwpibrdrl",
-    resave: true, 
-    saveUninitialized: true 
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -38,14 +46,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3db", { 
     .then(() => console.log("MongoDB Connected..."))
     .catch(err => console.log(err));
 
-// Configure keys for accessing AWS
-AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-});
-
-// Configure AWS to work with promises
-AWS.config.setPromisesDependency(bluebird);
 
 
 // Start server

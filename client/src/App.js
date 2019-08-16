@@ -19,7 +19,7 @@ const App = () => (
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/favorites" component={Favorites} />
-                    <Route path="/image-upload" component={ImageUpload} />
+                    <Route path="/image" component={ImageUpload} />
                     <Route component={NotFound} />
                 </Switch>
             </Container>

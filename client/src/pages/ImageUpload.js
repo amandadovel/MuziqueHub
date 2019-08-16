@@ -1,35 +1,53 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row } from "../components/Grid";
 
-class ImageUpload extends Component {
-    constructor() {
-        super();
-        this.state = {
-            file: null
-        };
+
+class ImageUpload extends React.Component {
+    state = {
+        url: "",
+        photo: null,
+        photoName: ""
     }
 
-    submitImage = e => {
+    handleInputChange = e => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    getFile = e => {
+        this.setState({
+            photo: e.target.files[0]
+        })
+        console.log("files", e.target.files);
+    }
+
+    handleSubmit = e => {
         e.preventDefault();
-        console.log('in function');
-        const formData = new FormData();
-        formData.append("file", this.state.file[0]);
-        console.log('form data', formData)
-        axios.post("/api/image/upload", formData, {
-            headers: {
-                'Content-Type': "multipart/form-data"
-            }
-        }).then(res => {
-            console.log('success', res);
-        }).catch(err => {
-            console.log('error', err);
-        });
-    }
-
-    handleImageUpload = e => {
-        this.setState({ file: e.target.files });
+        console.log("Click");
+        document.querySelector("#fileUpload").reportValidity();
+        let payload = new FormData();
+        payload.append("file", this.state.photo);
+        payload.append("photoName", this.state.photoName);
+        console.log("state", this.state);
+        fetch("http://localhost:3001/api/image/upload", {
+            method: "POST",
+            body: payload,
+            credentials: "include",
+            mode: "cors"
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log("Response: ", response);
+                this.setState({
+                    url: response
+                })
+            }).catch(err => {
+                console.log("error", err);
+            })
     }
 
     render() {
@@ -46,9 +64,13 @@ class ImageUpload extends Component {
                     </Col>
                 </Row>
 
-                <form onSubmit={this.submitImage}>
-                    <input label="upload image" type="file" onChange={this.handleImageUpload} />
-                    <button type="submit">Send</button>
+                <form id="fileUpload">
+                    <label>Select an image</label>
+                    <input type="file" required name="photo" onChange={this.getFile} />
+
+                    <label>Name your image</label>
+                    <input type="text" required name="photoName" onChange={this.handleInputChange} />
+                    <button onClick={this.handleSubmit}>Submit</button>
                 </form>
             </>
         );
