@@ -2,8 +2,11 @@ const router = require("express").Router();
 const db = require("../../models/");
 
 // Display all saved favorites
-// router.get("/all")
-//     .then()
+router.get("/all", (req, res) => {
+    db.User
+        .find()
+})
+    
 
 // Save artist to the database
 router.post("/", (req, res) => {
