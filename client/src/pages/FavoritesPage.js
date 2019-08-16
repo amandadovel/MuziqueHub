@@ -11,10 +11,8 @@ class Favorites extends Component {
     }
 
     componentDidMount() {
-
         API.isLoggedIn()
             .then(user => {
-                console.log(user.data);
                 if (user.data.loggedIn) {
                     this.setState({
                         message: `Welcome ${user.data.user.username}`,
@@ -23,12 +21,12 @@ class Favorites extends Component {
                     })
                 } else {
                     this.setState({
-                        message: user.data.message
+                        message: user.data.message,
+                        loggedIn: false
                     })
                 }
             })
             .catch(err => console.log(err))
-            
     }
 
     render() {
