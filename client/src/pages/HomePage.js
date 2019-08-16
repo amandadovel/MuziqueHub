@@ -19,7 +19,7 @@ class ArtistSearch extends Component {
             [e.target.name]: e.target.value
         });
     };
-
+    
     getArtistInfo = () => {
         API.getArtistInfo(this.state.artistName)
             .then(res =>

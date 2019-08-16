@@ -29,7 +29,7 @@ class Login extends Component {
             password: this.state.password
         }).then(user => {
             if (user.data.loggedIn) {
-                this.props.history.push("/favorites");
+                window.location.href = '/favorites';
             } else {
                 this.setState({
                     loggedIn: false,

@@ -75,7 +75,7 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 {musicVidLink ? (
                     <div className ="d-flex flex-wrap justify-content-center">
                         {musicVidLink.map(item => (
-                            <iframe className="p-2 my-3 mx-1" src={item.vidLink} title="myframe" key={item.vidLink} allowFullScreen={true}></iframe>
+                            <iframe className="p-2 my-3 mx-1" src={item.vidLink} title="myframe" key={item.vidId} allowFullScreen={true}></iframe>
                         ))}
                     </div>
                 ) : <div></div>}
