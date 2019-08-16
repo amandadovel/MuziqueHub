@@ -21,6 +21,7 @@ const App = () => (
                     <Route path="/login" component={Login} />
                     <Route path="/favorites" component={Favorites} />
                     <Route path="/Concerts" component={Concerts} />
+                    <Route path="/image-upload" component={ImageUpload} />
                     <Route component={NotFound} />
                 </Switch>
             </Container>

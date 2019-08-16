@@ -33,9 +33,10 @@ class ImageUpload extends React.Component {
         payload.append("file", this.state.photo);
         payload.append("photoName", this.state.photoName);
         console.log("state", this.state);
-        fetch("http://localhost:3001/api/image/upload", {
+        fetch("http://localhost:3000/api/image/upload", {
             method: "POST",
             body: payload,
+            headers: { "Content-Type ": "application/json"},
             credentials: "include",
             mode: "cors"
         })
@@ -45,7 +46,8 @@ class ImageUpload extends React.Component {
                 this.setState({
                     url: response
                 })
-            }).catch(err => {
+            })
+            .catch(err => {
                 console.log("error", err);
             })
     }
