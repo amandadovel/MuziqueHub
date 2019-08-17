@@ -8,6 +8,7 @@ import Signup from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
 import Concerts from "./pages/ConcertsPage";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 const App = () => (
     <>  
@@ -23,6 +24,7 @@ const App = () => (
                     <Route component={NotFound} />
                 </Switch>
             </Container>
+            <Footer />
         </Router>
     </>
 );

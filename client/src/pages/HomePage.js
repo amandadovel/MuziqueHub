@@ -6,6 +6,7 @@ import ArtistForm from "../components/ArtistForm";
 import Card from "../components/Card";
 import Artist from "../components/Artist";
 import API from "../utils/API";
+import "./style.css";
 
 class ArtistSearch extends Component {
     state = {
@@ -143,7 +144,7 @@ class ArtistSearch extends Component {
                                 ))}
                             </List>
                         </Card>
-                        ) : <h2 className="text-center">{this.state.message}</h2> }
+                        ) : <h2 className="home-message">{this.state.message}</h2> }
                     </Col>
                 </Row>
             </>
