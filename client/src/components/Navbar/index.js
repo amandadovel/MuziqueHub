@@ -115,50 +115,20 @@ class Navbar extends Component {
               <g />
             </svg>
           </div>
+
           <div className="navbar-brand">Music App</div>
-          <NavLink className="nav-link" exact to="/">
-            Home
-          </NavLink>
-          <NavLink className="nav-link" exact to="/Concerts">
-            Concerts
-          </NavLink>
-          <NavLink
-            className="nav-link mr-auto"
-            exact
-            to="/favorites"
-            activeClassName="active"
-          >
-            Favorites
-          </NavLink>
-          {this.state.loggedIn ? (
+            <NavLink className="nav-link" exact to="/">Home</NavLink>
+            <NavLink className="nav-link" exact to="/Concerts">Concerts</NavLink>
+            <NavLink className="nav-link mr-auto" exact to="/favorites" activeClassName="active">Favorites</NavLink>
+                {this.state.loggedIn ? (
+                <>
+                    <div className="nav-message">{this.state.message}</div>
+                        <NavLink className="nav-link" onClick={this.logout} to="" activeClassName="active">Logout</NavLink>
+                </>
+                ) : (
             <>
-              <div className="nav-message">{this.state.message}</div>
-              <NavLink
-                className="nav-link"
-                onClick={this.logout}
-                activeClassName="active"
-              >
-                Logout
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                className="nav-link"
-                exact
-                to="/login"
-                activeClassName="active"
-              >
-                Login
-              </NavLink>
-              <NavLink
-                className="nav-link"
-                exact
-                to="/signup"
-                activeClassName="active"
-              >
-                Signup
-              </NavLink>
+              <NavLink className="nav-link" exact to="/login" activeClassName="active">Login</NavLink>
+              <NavLink className="nav-link" exact to="/signup" activeClassName="active">Signup</NavLink>
             </>
           )}
         </div>
