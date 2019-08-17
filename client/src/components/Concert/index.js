@@ -36,5 +36,4 @@ const Concert = ({ eventId, event, type, eventLink, date, venue, location, perfo
     </ListItem>
 );
 
-
 export default Concert;

@@ -34,7 +34,7 @@ router.post("/signup",
                     return Promise.reject("Missing credentials");
                 } else {
                     return value;
-                }
+                };
             }),
     ],
     (req, res) => {
@@ -83,11 +83,11 @@ router.get("/logout", auth.logout, (req, res, next) => {
 });
 
 // Favorite route restricted to logged in users
-router.get("/favorites", auth.loggedIn, (req, res, next) => {
+router.get("/auth", auth.loggedIn, (req, res, next) => {
     res.json({ user: req.user, loggedIn: true });
 });
 
-// Restricted route for unauthorized users
+// Restricted route to send unauthorized users
 router.get("/restricted", function(req, res) {
     let message = req.flash("error")[0];
     res.json({ message: message || "Signup or login to save Favorites" });

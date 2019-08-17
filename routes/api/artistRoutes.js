@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const axios = require("axios");
-const db = require("../../models/");
 require('dotenv').config();
 const apiKey = process.env.REACT_APP_AUDIODB_APIKEY;
 
@@ -37,8 +36,6 @@ router.get("/search", (req, res) => {
             axios.get(`https://www.theaudiodb.com/api/v1/json/${apiKey}/mvid.php?i=${artistId}`)
                 .then(results => {
                     // If music videos available create video object and nest it within the artist object
-                    console.log(results.data.mvids);
-                    
                     if (results.data.mvids) {
                         results.data.mvids.map(result => {
                             let video = {
@@ -62,7 +59,5 @@ router.get("/search", (req, res) => {
         })
         .catch(err => res.status(422).json(err));
 });
-
-
 
 module.exports = router;

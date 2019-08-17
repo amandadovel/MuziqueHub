@@ -11,14 +11,12 @@
     font-family: 'Barriecito', cursive;
     letter-spacing: 2px;
     font-size: 23px;
-
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.701);
     transition: all .2s ease-in-out; 
     font-family: 'DM Serif Text', serif;
-
 }
 
 .nav-message {
@@ -33,10 +31,11 @@
 
 .nav-link:hover {
     color: white;
-    transform: scale(1.5);
+    transform: scale(1.2);
     text-shadow: black 1px 1px 1px;
 }
-.active:hover {
-    color: rgb(228, 19, 19);
-}
 
+.active:hover {
+    color: rgba(255, 255, 255, 0.701);
+    transform: scale(1);
+}

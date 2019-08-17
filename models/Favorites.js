@@ -2,16 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const favoritesSchema = new Schema({
-    artistId: {
-        type: String,
-        required: true, 
-        unique: true
-    },
-    artistName: {
-        type: String,
-        required: true,
-        unique: true
-    },
+    artistId: { type: String, required: true },
+    artistName: { type: String, required: true },
     label: String,
     genre: String,
     website: String,

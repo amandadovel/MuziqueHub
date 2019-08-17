@@ -11,7 +11,26 @@ class ArtistSearch extends Component {
     state = {
         artists: [],
         artistName: "",
-        message: "Search for your favorite artist to begin!"
+        message: "Search for your favorite artist to begin!",
+        loggedIn: false,
+        user: null
+    };
+
+    componentDidMount() {
+        API.isLoggedIn()
+            .then(user => {
+                if (user.data.loggedIn) {
+                    this.setState({
+                        loggedIn: true,
+                        user: user.data.user
+                    })
+                } else {
+                    this.setState({
+                        loggedIn: false
+                    })
+                }
+            })
+            .catch(err => console.log(err));
     };
 
     handleInputChange = e => {
@@ -30,7 +49,7 @@ class ArtistSearch extends Component {
             .catch(() =>
                 this.setState({
                     artists: [],
-                    message: "No artists found, please try again"
+                    message: "No artists found, please try again."
                 })
             );
     };
@@ -41,25 +60,29 @@ class ArtistSearch extends Component {
     };
 
     handleSave = id => {
-        const artist = this.state.artists.find(artist => artist.artistId === id);
-        API.saveArtist({
-            artistId: artist.artistId,
-            artistName: artist.artistName,
-            label: artist.label,
-            genre: artist.genre,
-            website: artist.website,
-            facebook: artist.facebook,
-            twitter: artist.twitter,
-            biography: artist.biography,
-            country: artist.country ,
-            artistThumb: artist.artistThumb ,
-            artistLogo: artist.artistLogo,
-            artistFanart: artist.artistFanart,
-            artistFanart2: artist.artistFanart2,
-            artistFanart3: artist.artistFanart3,
-            musicVideos: artist.musicVideos
-        })
-        .then(() => this.getArtistInfo())
+        if (this.state.loggedIn) {
+            const artist = this.state.artists.find(artist => artist.artistId === id);
+            API.saveFavorite({
+                artistId: artist.artistId,
+                artistName: artist.artistName,
+                label: artist.label,
+                genre: artist.genre,
+                website: artist.website,
+                facebook: artist.facebook,
+                twitter: artist.twitter,
+                biography: artist.biography,
+                country: artist.country ,
+                artistThumb: artist.artistThumb ,
+                artistLogo: artist.artistLogo,
+                artistFanart: artist.artistFanart,
+                artistFanart2: artist.artistFanart2,
+                artistFanart3: artist.artistFanart3,
+                musicVideos: artist.musicVideos
+            })
+            .then(() => window.location.href = '/favorites');
+        } else {
+            window.location.href = '/favorites';
+        }
     };
 
     render() {
@@ -93,7 +116,7 @@ class ArtistSearch extends Component {
                         { this.state.artists.length ? (
                         <Card title="Results">
                             <List>
-                                { this.state.artists.map(artist => (
+                                {this.state.artists.map(artist => (
                                     <Artist
                                         key={artist.artistId}
                                         artist={artist.artistName}
@@ -111,16 +134,16 @@ class ArtistSearch extends Component {
                                         fanart3={artist.artistFanart3}
                                         musicVidLink={artist.musicVideos}
                                         Button={() => (
-                                            <button className="btn btn-success" onClick= { () => this.handleSave(artist.artistId) }>
+                                            <button className="btn btn-success my-3" onClick= { () => this.handleSave(artist.artistId) }>
                                                 Save
                                             </button>
                                         )}
                                     >
                                     </Artist>
-                                )) }
+                                ))}
                             </List>
                         </Card>
-                        ):  <h2 className="text-center">{this.state.message}</h2> }
+                        ) : <h2 className="text-center">{this.state.message}</h2> }
                     </Col>
                 </Row>
             </>

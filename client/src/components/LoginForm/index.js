@@ -9,10 +9,10 @@ const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, me
                 className="form-control mb-2"
                 id="Username"
                 type="text"
-                value={ username }
+                value={username}
                 placeholder="Enter Username"
                 name="username"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
             <label htmlFor="Username">Password</label>
@@ -20,28 +20,26 @@ const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, me
                 className="form-control"
                 id="Password"
                 type="password"
-                value={ password }
+                value={password}
                 placeholder="Enter Password"
                 name="password"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
         </div>
         <div className="d-flex justify-content-center">
             <button
-                onClick={ handleFormSubmit }
+                onClick={handleFormSubmit}
                 type="submit"
                 className="btn btn-success"
             >Login
             </button>
         </div>
-        { message ? (
-            <>
-                <div className="alert alert-danger text-center mt-3 mb-0">
-                    <span>{ message }</span>
-                </div>
-            </>
-        ) : <div></div> }
+        {message ? (
+            <div className="alert alert-danger text-center mt-3 mb-0">
+                <span>{message}</span>
+            </div>
+        ) : <div></div>}
     </form>
 );
 
