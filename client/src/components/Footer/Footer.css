@@ -1,0 +1,28 @@
+.footer {
+    background:rgba(0, 0, 0, 0.562);
+}
+
+.contributor {
+    font-family: 'Barriecito', cursive;
+    text-shadow: red 1px 1px 11px;
+}
+
+.fa-github-alt {
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.fa-github-alt:hover {
+    transform: scale(1.2);
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+    text-shadow: red 1px 1px 11px;
+}
+
+.footer a:hover {
+    color: rgb(202, 202, 202);
+    text-decoration: none;
+}
