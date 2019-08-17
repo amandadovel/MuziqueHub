@@ -1,23 +1,19 @@
 import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
+import "./Concert.css"
 
-const Concert = ({ eventId, event, type, eventLink, date, venue, location, performance, Button }) => (
+const Concert = ({ event, type, date, venue, location, Button }) => (
     <ListItem>
         <Row>
             <Col size="md-12">
-                <div>
-                    {eventId}
-                </div>
-                <div>
+                <div className="event-title">
                     {event}
                 </div>
-                <div>
+                <div className="">
                     {type}
                 </div>
-                <div>
-                    {eventLink}
-                </div>
+
                 <div>
                     {date}
                 </div>
@@ -27,10 +23,7 @@ const Concert = ({ eventId, event, type, eventLink, date, venue, location, perfo
                 <div>
                     {location}
                 </div>
-                {/* <div>
-                    {performance}
-                </div> */}
-                {/* <Button /> */}
+                <Button />
             </Col>
         </Row>
     </ListItem>

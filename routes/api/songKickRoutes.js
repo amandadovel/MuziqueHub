@@ -31,7 +31,7 @@ router.get("/search" , (req, res) => {
             })
         )
         .then(mappedResults => res.json(mappedResults))
-        .catch(err => res.json(err));
+        .catch(err => res.status(422).json(err));
 });
 
 module.exports = router;

@@ -5,6 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import Card from "../components/Card";
 import Artist from "../components/Artist";
+import "./style.css";
 
 class Favorites extends Component {
     state = {
@@ -66,7 +67,7 @@ class Favorites extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <div className="text-center">{this.state.message}</div>
+                        <h2 className="message text-center">{this.state.message}</h2>
                     </Col>
                 </Row>
                 <Row>
