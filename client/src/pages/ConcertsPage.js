@@ -42,7 +42,6 @@ class ConcertSearch extends Component {
     };
 
     render() {
-        console.log(this.state);
         return (
             <>
               <Row>
@@ -74,7 +73,6 @@ class ConcertSearch extends Component {
                                         key={concert.eventId}
                                         event={concert.event}
                                         type={concert.type}
-                                        eventLink={concert.eventLink}
                                         date={concert.date}
                                         venue={concert.venue}
                                         location={concert.location}

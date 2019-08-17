@@ -1,3 +1,13 @@
+.event-title {
+    font-family: 'Barriecito', cursive;
+    text-shadow: red 1px 1px 11px;
+}
+
+.event-subtitle {
+    font-family: 'Barriecito', cursive;
+    
+}
+
 .event-link {
     text-decoration: none;
     color: white;
@@ -7,3 +17,4 @@
     text-decoration: none;
     color: white;
 }
+

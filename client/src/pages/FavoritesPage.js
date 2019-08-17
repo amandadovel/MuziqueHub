@@ -61,7 +61,8 @@ class Favorites extends Component {
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            <h1>Favorites</h1>
+                            <h1 className="text-center">Favorites</h1>
+                            <h2 className="text-center">Build a list of your favorite artists!</h2>
                         </Jumbotron>
                     </Col>
                 </Row>
@@ -82,7 +83,7 @@ class Favorites extends Component {
                                             label={favorite.label}
                                             genre={favorite.genre}
                                             website={favorite.website}
-                                            faceartist={favorite.facebook}
+                                            facebook={favorite.facebook}
                                             twitter={favorite.twitter}
                                             biography={favorite.biography}
                                             country={favorite.country}

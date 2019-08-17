@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+const moment = require('moment');
 require("dotenv").config();
 
 // Macthes with /api/songkick/search
@@ -23,7 +24,7 @@ router.get("/search" , (req, res) => {
                     event: result.displayName, 
                     type: result.type,
                     eventLink: result.uri,
-                    date: result.start.date,
+                    date: moment(result.start.date, "YYYY-MM-DD").format("L"),
                     venue: result.venue.displayName,
                     location: result.location.city,
                     performance: performance

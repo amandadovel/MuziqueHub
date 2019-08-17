@@ -1,6 +1,7 @@
 import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
+import "./Artist.css"
 
 const Artist = ({ artist, label, genre, website, facebook, twitter, biography, country, thumbnail, logo, fanart, fanart2, fanart3, Button, musicVidLink }) => (
     <ListItem>
