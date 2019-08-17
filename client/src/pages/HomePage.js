@@ -124,7 +124,7 @@ class ArtistSearch extends Component {
                                         label={artist.label}
                                         genre={artist.genre}
                                         website={artist.website}
-                                        faceartist={artist.facebook}
+                                        facebook={artist.facebook}
                                         twitter={artist.twitter}
                                         biography={artist.biography}
                                         country={artist.country}
@@ -135,7 +135,7 @@ class ArtistSearch extends Component {
                                         fanart3={artist.artistFanart3}
                                         musicVidLink={artist.musicVideos}
                                         Button={() => (
-                                            <button className="btn btn-success my-3" onClick= { () => this.handleSave(artist.artistId) }>
+                                            <button className="btn btn-danger my-3" onClick= { () => this.handleSave(artist.artistId) }>
                                                 Save
                                             </button>
                                         )}

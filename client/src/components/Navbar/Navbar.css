@@ -28,6 +28,10 @@
     align-self: center;
 }
 
+.links:hover {
+    cursor: pointer;
+}
+
 .active {
     color: white;
 }
