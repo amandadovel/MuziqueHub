@@ -66,7 +66,7 @@ class Favorites extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <div className="text-center">{this.state.message}</div>
+                        <h2 className="text-center">{this.state.message}</h2>
                     </Col>
                 </Row>
                 <Row>

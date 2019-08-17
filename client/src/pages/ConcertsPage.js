@@ -30,7 +30,7 @@ class ConcertSearch extends Component {
             .catch(() =>
                 this.setState({
                     concerts: [],
-                    message: "No Concert Information Found"
+                    message: "No concert tickets found, please try again."
                 })
             );
     };
@@ -41,6 +41,7 @@ class ConcertSearch extends Component {
     };
 
     render() {
+        console.log(this.state);
         return (
             <>
               <Row>
@@ -67,11 +68,11 @@ class ConcertSearch extends Component {
                 <Row>
                     <Col size="md-12">
                         {this.state.concerts.length ? (
-                        <Card>
+                        <Card title="Concert Results">
                             <List>
                                 {this.state.concerts.map(concert => (
                                     <Concert
-                                        key={concert.eventID}
+                                        key={concert.eventId}
                                         event={concert.event}
                                         type={concert.type}
                                         eventLink={concert.eventLink}
@@ -79,6 +80,13 @@ class ConcertSearch extends Component {
                                         venue={concert.venue}
                                         location={concert.location}
                                         performance={concert.performance}
+                                        Button={() => (
+                                                <button className="btn btn-success my-3">
+                                                    <a className="event-link" href={concert.eventLink} target="_blank" rel="noopener noreferrer">
+                                                        Get Tickets
+                                                    </a>
+                                                </button>
+                                            )}
                                         >
                                     </Concert> 
                                 ))}

@@ -124,7 +124,7 @@ class ArtistSearch extends Component {
                                         label={artist.label}
                                         genre={artist.genre}
                                         website={artist.website}
-                                        faceartist={artist.facebook}
+                                        facebook={artist.facebook}
                                         twitter={artist.twitter}
                                         biography={artist.biography}
                                         country={artist.country}
