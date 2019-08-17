@@ -1,7 +1,5 @@
 # Project-3
 
-### Demo
-
 <a href="https://project-3-music-app.herokuapp.com">Project-3</a>
 
 
@@ -22,17 +20,30 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone repository. Click on the clone button next to the repository (clone with SSH). 
 2. Open Terminal and git clone (paste) into directory of your choice. 
 3. Open folder in VS Code. 
-4. The `client` folder holds 
-5. Inside of the `models` folder is the `Favorites.js` and `User.js` with the intial Schemas, and the `index.js` which exports them to React.
-6. The `passport` folder holds `middleware`, which contains the authentication logic.
-7. The `routes` folder has
-8. `server.js` connects the app to the server and the correct port. 
+4. Obtain api keys from theaudiodb and SongKick, then place them in your own .env file.
+5. Install all neccessary npm packages by opening your terminal, navigating to the directory, and typing `npm i`.
+6. Type `NPM Start` to run application.
 
 ## Pre-Requisites ✔️
 
-1. Node - use this site to install node into your computer: https://nodejs.org/en/download/
-    *to check if node is installed type node -v into your terminal. If installed it will print the version number on the screen.
-2. NPM (https://www.npmjs.com/) - Node Package Manager. Use this site to assist in downloading packages or modules. 
+1. Axios - npm i axios
+2. Bcrypt - npm i bcrypt
+3. Connect-Flash - npm i connect-flash
+4. Dotevn - npm i dotenv
+5. Express - npm i express
+6. Express-Session - npm i express-session
+7. Express-Validation - npm i express-validation
+8. If-Env - npm i if-env
+9. Mongoose - npm i mongoose
+10. Passport - npm i passport
+11. Passport-Local - npm i passport-local
+12. Path - npm i path
+13. Concurrently - npm i concurrently
+14. Nodemon - npm i nodemon
+
+--or--
+
+15. npm i (install all)
 
 ## Built With 🔧
 
@@ -58,3 +69,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Acknowledgments 🌟
 
+SongKick - https://www.songkick.com
+
+TheAudioDB - https://www.theaudiodb.com/
