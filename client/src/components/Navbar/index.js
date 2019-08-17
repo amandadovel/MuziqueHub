@@ -129,7 +129,7 @@ class Navbar extends Component {
                             </div>
                             <NavLink
                                 className="nav-link"
-                                onClick={this.logout}
+                                onClick={this.logout} to=""
                                 activeClassName="active"
                             >
                                 Logout
