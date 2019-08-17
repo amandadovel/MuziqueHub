@@ -11,22 +11,30 @@
     font-family: 'Barriecito', cursive;
     letter-spacing: 2px;
     font-size: 23px;
+    align-self: center;
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.701);
     transition: all .2s ease-in-out; 
     font-family: 'DM Serif Text', serif;
+    align-self: center;
 }
 
 .nav-message {
     align-self: center;
     font-family: 'Barriecito', cursive;
     text-shadow: red 1px 1px 11px;
+    align-self: center;
 }
 
 .active {
     color: white;
+}
+
+.active:hover {
+    color: rgba(255, 255, 255, 0.701);
+    transform: scale(1);
 }
 
 .nav-link:hover {
@@ -35,7 +43,44 @@
     text-shadow: black 1px 1px 1px;
 }
 
-.active:hover {
-    color: rgba(255, 255, 255, 0.701);
-    transform: scale(1);
+.music-note {
+    animation: music-note-move infinite 7s backwards; 
+    transform-origin: 50% 50%
 }
+
+@keyframes music-note-move {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-60deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.circle {
+    animation: circle-grow infinite .5s ease-in-out alternate;
+    transform-origin: 50% 50%;
+}
+
+@keyframes circle-grow {
+    0% {
+        transform: scale(1.0);
+    }
+    5% {
+        transform: scale(1.1);
+    }
+}
+
+
+
+
+
