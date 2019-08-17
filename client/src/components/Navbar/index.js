@@ -82,7 +82,7 @@ class Navbar extends Component {
                     {this.state.loggedIn ? (
                         <>
                             <div className="nav-message">{this.state.message}</div>
-                            <NavLink className="nav-link" onClick={this.logout} activeClassName="active">Logout</NavLink>
+                            <NavLink className="nav-link" onClick={this.logout} to="" activeClassName="active">Logout</NavLink>
                         </>
                     ) : (
                         <>

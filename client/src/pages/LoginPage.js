@@ -3,6 +3,7 @@ import { Row, Col } from "../components/Grid";
 import Card from "../components/Card";
 import LoginForm from "../components/LoginForm";
 import API from "../utils/API";
+import "./style.css";
 
 class Login extends Component {
     state = {

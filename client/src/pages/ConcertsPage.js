@@ -6,6 +6,7 @@ import ArtistForm from "../components/ArtistForm";
 import Card from "../components/Card";
 import Concert from  "../components/Concert";
 import API from "../utils/API";
+import "./style.css";
 
 class ConcertSearch extends Component {
     state = {
@@ -47,10 +48,8 @@ class ConcertSearch extends Component {
               <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            <h1 className="text-center">
-                                <strong>Live Performances</strong>
-                            </h1>
-                            <h2 className="text-center start-message">Are they near you soon?</h2>
+                            <h1 className="text-center"><strong>Live Performances</strong></h1>
+                            <h2 className="text-center">Are they near you soon?</h2>
                         </Jumbotron>
                     </Col>
                 </Row> 
@@ -79,7 +78,6 @@ class ConcertSearch extends Component {
                                         date={concert.date}
                                         venue={concert.venue}
                                         location={concert.location}
-                                        performance={concert.performance}
                                         Button={() => (
                                                 <button className="btn btn-success my-3">
                                                     <a className="event-link" href={concert.eventLink} target="_blank" rel="noopener noreferrer">
@@ -92,7 +90,7 @@ class ConcertSearch extends Component {
                                 ))}
                             </List>
                         </Card>
-                        ) : <h2 className="text-center">{this.state.message}</h2>}
+                        ) : <h2 className="message text-center">{this.state.message}</h2>}
                     </Col>
                 </Row>
             </>
