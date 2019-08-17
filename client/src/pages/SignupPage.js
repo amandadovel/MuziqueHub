@@ -18,12 +18,12 @@ class Signup extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
+    };
 
     handleFormSubmit = e => {
         e.preventDefault();
         this.signup();
-    }
+    };
 
     signup = () => {
         API.signup({
@@ -34,7 +34,7 @@ class Signup extends Component {
         })
         .then(user => {
             if (user.data.loggedIn) {
-                window.location.href = '/favorites';
+                window.location.href = '/';
             } else {
                 this.setState({
                     loggedIn: false,
@@ -43,8 +43,8 @@ class Signup extends Component {
             }
         }).catch(err => {
             console.log(err);
-        })
-    }
+        });
+    };
 
     render() {
         return (
@@ -65,8 +65,8 @@ class Signup extends Component {
                     </Col>
                 </Row>
             </>
-        )
+        );
     }
-}
+};
 
 export default Signup;

@@ -29,7 +29,7 @@ class Login extends Component {
             password: this.state.password
         }).then(user => {
             if (user.data.loggedIn) {
-                window.location.href = '/favorites';
+                window.location.href = '/';
             } else {
                 this.setState({
                     loggedIn: false,
