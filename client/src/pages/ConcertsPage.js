@@ -8,7 +8,6 @@ import Concert from  "../components/Concert";
 import API from "../utils/API";
 
 class ConcertSearch extends Component {
-
     state = {
         concerts: [],
         artistName: "",
@@ -41,10 +40,7 @@ class ConcertSearch extends Component {
         this.getSongKickInfo();
     };
 
-
     render() {
-        console.log(this.state);
-        
         return (
             <>
               <Row>
@@ -70,10 +66,10 @@ class ConcertSearch extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        { this.state.concerts.length ? (
+                        {this.state.concerts.length ? (
                         <Card>
                             <List>
-                                { this.state.concerts.map(concert => (
+                                {this.state.concerts.map(concert => (
                                     <Concert
                                         key={concert.eventID}
                                         event={concert.event}
@@ -86,19 +82,14 @@ class ConcertSearch extends Component {
                                         >
                                     </Concert> 
                                 ))}
-
                             </List>
                         </Card>
-                            
                         ) : <h2 className="text-center">{this.state.message}</h2>}
-
                     </Col>
                 </Row>
-
-
             </>
-        )
+        );
     }
-}
+};
 
 export default ConcertSearch;

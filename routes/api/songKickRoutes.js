@@ -27,7 +27,7 @@ router.get("/search" , (req, res) => {
                     venue: result.venue.displayName,
                     location: result.location.city,
                     performance: performance
-                }
+                };
             })
         )
         .then(mappedResults => res.json(mappedResults))
