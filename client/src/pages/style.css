@@ -2,8 +2,19 @@
     background-color: #A0030F;
     border: none;
     box-shadow: 0px 0px 17px inset black;
+    font-family: 'DM Serif Text', serif;
+    transition: all 0.25s
 }
 
 .message {
     font-family: 'DM Serif Text', serif;    
+}
+
+.list-group-item {
+    margin-bottom: 2em;
+    border-color: #A0030F;
+}
+
+hr {
+    border-top: 1px solid #ffafaf;
 }

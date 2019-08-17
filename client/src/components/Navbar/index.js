@@ -21,11 +21,12 @@ class Navbar extends Component {
                     });
                 } else {
                     this.setState({
-                        message: ""
+                        message: "",
+                        loggedIn: false,
+                        user: null
                     });
                 }
             })
-            .catch(err => console.log(err));
     }
     logout() {
         API.logout()
