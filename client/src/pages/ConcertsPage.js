@@ -54,7 +54,7 @@ class ConcertSearch extends Component {
                 </Row> 
                 <Row>
                     <Col size="md-12">
-                        <Card title="Artist Search">
+                        <Card title="Concert Search">
                             <ArtistForm
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}
@@ -77,7 +77,7 @@ class ConcertSearch extends Component {
                                         venue={concert.venue}
                                         location={concert.location}
                                         Button={() => (
-                                                <button className="btn btn-success my-3">
+                                                <button className="btn btn-success mt-0 mb-3">
                                                     <a className="event-link" href={concert.eventLink} target="_blank" rel="noopener noreferrer">
                                                         Get Tickets
                                                     </a>

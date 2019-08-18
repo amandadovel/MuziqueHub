@@ -1,3 +1,23 @@
+.artist-name,
+.genre,
+.media-links {
+    font-family: 'Barriecito', cursive;
+}
+
 .biography {
     line-height: 1.75em;
+    font-family: 'DM Serif Text', serif;
+}
+
+.links {
+    transition: all .2s ease-in-out; 
+    color: white !important;
+    font-size: 24px;
+}
+
+.links:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    text-decoration: none;
+    text-shadow: red 1px 1px 11px;
 }

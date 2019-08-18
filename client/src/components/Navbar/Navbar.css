@@ -12,6 +12,12 @@
     letter-spacing: 2px;
     font-size: 23px;
     align-self: center;
+    margin-right: 0;
+}
+
+.svg-wrapper,
+.navbar-brand {
+    user-select: none;
 }
 
 .nav-link {
@@ -19,6 +25,18 @@
     transition: all .2s ease-in-out; 
     font-family: 'DM Serif Text', serif;
     align-self: center;
+    padding-left: 0.25em;
+    padding-right: 1.5em;
+}
+
+.nav-link:hover {
+    color: white;
+    text-shadow: black 1px 1px 1px;
+    transform: scale(1.02) !important;
+}
+
+.navbar-toggler:focus {
+    outline: none;
 }
 
 .nav-message {
@@ -28,23 +46,14 @@
     align-self: center;
 }
 
-.links:hover {
-    cursor: pointer;
-}
-
 .active {
     color: white;
+    transform: scale(1.02) !important;
 }
 
 .active:hover {
     color: rgba(255, 255, 255, 0.701);
     transform: scale(1);
-}
-
-.nav-link:hover {
-    color: white;
-    transform: scale(1.2);
-    text-shadow: black 1px 1px 1px;
 }
 
 .music-note {
@@ -84,7 +93,8 @@
     }
 }
 
-
-
-
-
+@media only screen and (max-width: 767px) {
+    .navbar {
+        position: inherit !important;
+    }
+}
