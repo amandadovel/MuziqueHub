@@ -17,28 +17,25 @@ const Concert = ({ event, type, date, venue, location, Button }) => (
         </Row>
         <Row>
             <Col size="md-3">
-                <div className="d-flex flex-column text-center justify-content-start h-100">
+                <div className="d-flex flex-column text-center justify-content-start h-100 py-2">
                     <h4 className="event-subtitle">Venue?</h4>
-                    <hr></hr>
                     <h5>{venue}</h5>
                 </div>
             </Col>
             <Col size="md-3">
-                <div className="d-flex flex-column text-center justify-content-start h-100">
+                <div className="d-flex flex-column text-center justify-content-start h-100 py-2">
                     <h4 className="event-subtitle">Where?</h4>
-                    <hr></hr>
                     <h5>{location}</h5>
                 </div>
             </Col>
             <Col size="md-3">
-                <div className="d-flex flex-column text-center justify-content-start h-100">
+                <div className="d-flex flex-column text-center justify-content-start h-100 py-2">
                     <h4 className="event-subtitle">When?</h4>
-                    <hr></hr>
                     <h5>{date}</h5>
                 </div>
             </Col>
             <Col size="md-3">
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column py-2">
                     <Button />
                     <img src={songKickLogo} className="img-fluid w-50 m-auto sk-logo" alt="SongKick" />
                 </div>

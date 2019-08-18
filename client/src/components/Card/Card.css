@@ -1,29 +1,10 @@
 .card {
     background:rgba(0, 0, 0, 0.562);
+    border-color: rgb(59, 59, 59);
 }
 
-.list-group-item {
-    background:rgba(0, 0, 0, 0.562);
-}
-
-.artist-name,
-.genre,
-.media-links {
+.card-header {
     font-family: 'Barriecito', cursive;
-}
-
-.biography {
-    font-family: 'DM Serif Text', serif;
-}
-
-.links {
-    transition: all .2s ease-in-out; 
-    color: white !important;
-    font-size: 24px;
-}
-
-.links:hover {
-    transform: scale(1.5);
-    text-decoration: none;
     text-shadow: red 1px 1px 11px;
+    font-size: 1.5em;
 }

@@ -115,7 +115,7 @@ class ArtistSearch extends Component {
                 <Row>
                     <Col size="md-12">
                         { this.state.artists.length ? (
-                        <Card title="Results">
+                        <Card title="Artist Results">
                             <List>
                                 {this.state.artists.map(artist => (
                                     <Artist

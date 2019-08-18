@@ -35,7 +35,7 @@
 
 --or--
 
-15. Shorthand `npm i` (install all)
+Shorthand `npm i` (install all)
 
 ## Getting Started 🏁
 

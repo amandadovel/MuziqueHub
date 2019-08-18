@@ -13,7 +13,6 @@ export default {
     logout: () => {
         return axios.get("/api/users/logout");
     },
-    // === user auth route ===
     // === restricted to logged in users only ===
     isLoggedIn: () => {
         return axios.get("/api/users/auth");

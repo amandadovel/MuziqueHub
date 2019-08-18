@@ -26,7 +26,7 @@ class Navbar extends Component {
                         user: null
                     });
                 }
-            })
+            });
     }
     logout() {
         API.logout()
@@ -40,8 +40,11 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
                 <div className="d-flex w-100">
+                    <button className="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
                     <div className="svg-wrapper pr-3">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 468.859 468.859" xmlSpace="preserve">
                             <g>
@@ -77,21 +80,23 @@ class Navbar extends Component {
                         </svg>
                     </div>
                     <div className="navbar-brand">Music App</div>
-                    <NavLink className="nav-link" exact to="/">Home</NavLink>
-                    <NavLink className="nav-link" exact to="/Concerts">Concerts</NavLink>
-                    <NavLink className="nav-link mr-auto" exact to="/favorites" activeClassName="active">Favorites</NavLink>
-                    {this.state.loggedIn ? (
-                        <>
-                            <div className="nav-message">{this.state.message}</div>
-                            <NavLink className="nav-link" onClick={this.logout} to="" activeClassName="active">Logout</NavLink>
-                        </>
-                    ) : (
-                        <>
-                            <NavLink className="nav-link" exact to="/login" activeClassName="active">Login</NavLink>
-                            <NavLink className="nav-link" exact to="/signup" activeClassName="active">Signup</NavLink>
-                        </>
-                    )}
                 </div>
+                    <div className="collapse navbar-collapse" id="navbarToggler">
+                        <NavLink className="nav-link" exact to="/">Home</NavLink>
+                        <NavLink className="nav-link" exact to="/Concerts">Concerts</NavLink>
+                        <NavLink className="nav-link mr-auto" exact to="/favorites" activeClassName="active">Favorites</NavLink>
+                        {this.state.loggedIn ? (
+                            <>
+                                <NavLink className="nav-link" onClick={this.logout} to="" activeClassName="active">Logout</NavLink>
+                                <div className="nav-message">{this.state.message}</div>
+                            </>
+                        ) : (
+                            <>
+                                <NavLink className="nav-link" exact to="/login" activeClassName="active">Login</NavLink>
+                                <NavLink className="nav-link" exact to="/signup" activeClassName="active">Signup</NavLink>
+                            </>
+                        )}
+                    </div>
             </nav>
         );
     }
