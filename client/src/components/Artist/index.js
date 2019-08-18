@@ -27,7 +27,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 <br></br>
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 <div className="media-links d-flex justify-content-around">
@@ -38,7 +37,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 <br></br>
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 <img src={thumbnail} alt="thumbnail" className="img-fluid rounded mx-auto d-block"></img>
@@ -46,7 +44,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 <p className="biography">{biography}</p>
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 {fanart ? (
@@ -54,7 +51,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 ) : <div></div>}
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 {fanart2 ? (
@@ -62,7 +58,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 ) : <div></div>}
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 {fanart3 ? (
@@ -70,7 +65,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 ) : <div></div>}
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 {musicVidLink ? (
@@ -83,7 +77,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
               
             </Col>
         </Row>
-
         <Row>
             <Col size="md-12">
                 <div className="text-center">
@@ -91,8 +84,7 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 </div>
             </Col>
         </Row>
-
     </ListItem>
-)
+);
 
 export default Artist;

@@ -24,7 +24,7 @@ router.get("/search" , (req, res) => {
                     event: result.displayName, 
                     type: result.type,
                     eventLink: result.uri,
-                    date: moment(result.start.date, "YYYY-MM-DD").format("L"),
+                    date: moment(result.start.date, "YYYY-MM-DD").format("L"), // format date w/ moment.js
                     venue: result.venue.displayName,
                     location: result.location.city,
                     performance: performance

@@ -12,6 +12,7 @@ class Favorites extends Component {
         favorites: [],
         message: "",
         loggedIn: false,
+        user: null
     }
 
     componentDidMount() {
@@ -21,6 +22,7 @@ class Favorites extends Component {
                     this.setState({
                         favorites: user.data.user.favorites,
                         loggedIn: true,
+                        user: user.data.user
                     });
                     this.findAllFavorites();
                 } else {
@@ -55,6 +57,11 @@ class Favorites extends Component {
             .then(() => window.location.href = '/favorites')
     };
 
+    handleClear = () => {
+        API.clearFavorites()
+        .then(() => window.location.href = '/favorites')
+    };
+
     render() {
         return (
             <>
@@ -74,7 +81,11 @@ class Favorites extends Component {
                 <Row>
                     <Col size="md-12">
                         {this.state.favorites.length ? (
-                            <Card title="Favorites">
+                            <Card title="Favorites" Button={() => (
+                                <button className="btn btn-danger btn-sm ml-auto" onClick={() => this.handleClear()}>
+                                    Clear Favorites
+                                </button>
+                            )}>
                                 <List>
                                     {this.state.favorites.map(favorite => (
                                         <Artist

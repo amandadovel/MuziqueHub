@@ -79,7 +79,7 @@ class Navbar extends Component {
                             </g><g /><g /><g /><g /><g /><g /><g /><g /><g /><g /><g /><g /><g /><g /><g />
                         </svg>
                     </div>
-                    <div className="navbar-brand">Music App</div>
+                    <div className="navbar-brand">Muzique</div>
                 </div>
                     <div className="collapse navbar-collapse" id="navbarToggler">
                         <NavLink className="nav-link" exact to="/">Home</NavLink>

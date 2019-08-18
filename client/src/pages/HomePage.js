@@ -12,7 +12,7 @@ class ArtistSearch extends Component {
     state = {
         artists: [],
         artistName: "",
-        message: "Search for your favorite artist to begin!",
+        message: "Search for your favorite artist!",
         loggedIn: false,
         user: null
     };
@@ -24,11 +24,11 @@ class ArtistSearch extends Component {
                     this.setState({
                         loggedIn: true,
                         user: user.data.user
-                    })
+                    });
                 } else {
                     this.setState({
                         loggedIn: false
-                    })
+                    });
                 }
             })
             .catch(err => console.log(err));
@@ -80,10 +80,25 @@ class ArtistSearch extends Component {
                 artistFanart3: artist.artistFanart3,
                 musicVideos: artist.musicVideos
             })
-            .then(() => window.location.href = '/favorites');
+            .then((result) => {
+                if (result.data.message) {
+                    this.setState({
+                        artists: [],
+                        message: result.data.message
+                    });
+                } else {
+                    window.location.href = '/favorites'
+                }
+            });
         } else {
             window.location.href = '/favorites';
         }
+    };
+
+    handleClearResults = () => {
+        this.setState({
+            artists: []
+        });
     };
 
     render() {
@@ -115,7 +130,11 @@ class ArtistSearch extends Component {
                 <Row>
                     <Col size="md-12">
                         { this.state.artists.length ? (
-                        <Card title="Artist Results">
+                        <Card title="Artist Results" Button={() => (
+                            <button className="btn btn-danger btn-sm ml-auto" onClick={() => this.handleClearResults()}>
+                                Clear Results
+                            </button>
+                        )}>
                             <List>
                                 {this.state.artists.map(artist => (
                                     <Artist
