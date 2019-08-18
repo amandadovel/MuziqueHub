@@ -12,7 +12,7 @@ class ConcertSearch extends Component {
     state = {
         concerts: [],
         artistName: "",
-        message: "Search for a Concert"
+        message: "Search for a Concert!"
     };
 
     handleInputChange = e => {
@@ -41,6 +41,12 @@ class ConcertSearch extends Component {
         this.getSongKickInfo();
     };
 
+    handleClearResults = () => {
+        this.setState({
+            concerts: []
+        });
+    };
+
     render() {
         return (
             <>
@@ -66,7 +72,11 @@ class ConcertSearch extends Component {
                 <Row>
                     <Col size="md-12">
                         {this.state.concerts.length ? (
-                        <Card title="Concert Results">
+                        <Card title="Concert Results" Button={() => (
+                            <button className="btn btn-danger btn-sm ml-auto" onClick={() => this.handleClearResults()}>
+                                Clear Results
+                            </button>
+                        )}>
                             <List>
                                 {this.state.concerts.map(concert => (
                                     <Concert

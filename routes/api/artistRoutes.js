@@ -15,9 +15,9 @@ router.get("/search", (req, res) => {
                 artistName: result.strArtist,
                 label: result.strLabel,
                 genre: result.strGenre,
-                website: "http://" + result.strWebsite,
-                facebook: "http://" + result.strFacebook,
-                twitter: "http://" + result.strTwitter,
+                website: "http://" + result.strWebsite, // concat http:// for link compatability
+                facebook: "http://" + result.strFacebook, // concat http:// for link compatability
+                twitter: "http://" + result.strTwitter, // concat http:// for link compatability
                 biography: result.strBiographyEN,
                 country: result.strCountry ,
                 artistThumb: result.strArtistThumb ,

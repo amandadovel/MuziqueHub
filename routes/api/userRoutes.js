@@ -90,7 +90,7 @@ router.get("/auth", auth.loggedIn, (req, res, next) => {
 // Restricted route to send unauthorized users
 router.get("/restricted", function(req, res) {
     let message = req.flash("error")[0];
-    res.json({ message: message || "Signup or login to save Favorites" });
+    res.json({ message: message || "Login or Signup to save Favorites!" });
 });
 
 module.exports = router;

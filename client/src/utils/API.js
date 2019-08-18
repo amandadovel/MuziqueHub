@@ -37,4 +37,8 @@ export default {
     deleteFavorite: (favoriteData) => {
         return axios.post("/api/favorites/delete", favoriteData);
     },
+    // === clear all favorites from user in database
+    clearFavorites: () => {
+        return axios.get("/api/favorites/clear");
+    },
 };
