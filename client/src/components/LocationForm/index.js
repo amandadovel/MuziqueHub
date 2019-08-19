@@ -1,18 +1,18 @@
 import React from "react";
 
-const ArtistForm = ({ artistName, handleInputChange, handleFormSubmit }) => (
+const LocationForm = ({ location, handleInputChange, handleFormSubmit }) => (
     <form>
         <div className="form-group">
             <label htmlFor="ArtistName">
-                <strong>Artist</strong>
+                <strong>Location</strong>
             </label>
             <input 
                 className="form-control"
-                id="ArtistName"
+                id="Location"
                 type="text"
-                value={artistName}
-                placeholder="Search artist"
-                name="artistName"
+                value={location}
+                placeholder="Search location"
+                name="location"
                 onChange={handleInputChange}
                 required
             />
@@ -27,4 +27,4 @@ const ArtistForm = ({ artistName, handleInputChange, handleFormSubmit }) => (
     </form>
 )
 
-export default ArtistForm;
+export default LocationForm;
