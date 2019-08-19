@@ -40,7 +40,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark fixed-top py-3">
                 <div className="d-flex w-100">
                     <button className="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
