@@ -5,14 +5,17 @@
 .contributor {
     font-family: 'Barriecito', cursive;
     text-shadow: red 1px 1px 11px;
+    letter-spacing: 1px;
+    padding: 0.25em 0;
 }
 
-.fa-github-alt {
+.fa {
+    padding: 0 .25em;
     transition: all 0.25s;
     cursor: pointer;
 }
 
-.fa-github-alt:hover {
+.fa:hover {
     transform: scale(1.2);
 }
 

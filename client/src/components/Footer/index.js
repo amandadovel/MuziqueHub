@@ -5,21 +5,54 @@ const Footer = () => (
     <footer className="footer mt-auto pt-3">
         <div className="container text-center">
             <div className="d-flex justify-content-around">
-                <span className="contributor d-flex flex-column">
-                    <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TreezCode">
-                        <i className="fa fa-github-alt fa-2x"></i>
-                    </a>Joey Kubalak
-                </span>
-                <span className="contributor d-flex flex-column">
-                    <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/amandadovel">
-                        <i className="fa fa-github-alt fa-2x"></i>
-                    </a>Amanda Dovel
-                </span>
-                <span className="contributor d-flex flex-column">
-                    <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KyleK86">
-                        <i className="fa fa-github-alt fa-2x"></i>
-                    </a>Kyle Knox
-                </span>
+                <div className="contributor d-flex flex-column">
+                    <div>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TreezCode">
+                            <i className="fa fa-github-alt fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="http://treezcode.github.io">
+                            <i className="fa fa-user-circle fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joey-kubalak-425032180/">
+                            <i class="fa fa-linkedin fa-2x"></i>
+                        </a>
+                    </div>
+                    <div className="pt-2">
+                        Joey Kubalak
+                    </div>
+                </div>
+                <div className="contributor d-flex flex-column">
+                    <div>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/amandadovel">
+                            <i className="fa fa-github-alt fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://amandadovel.github.io">
+                            <i className="fa fa-user-circle fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/amanda-dovel-5140b726/">
+                            <i class="fa fa-linkedin fa-2x"></i>
+                        </a>
+                    </div>
+                    <div className="pt-2">
+                        Amanda Dovel
+                    </div>
+                </div>
+                <div className="contributor d-flex flex-column">
+                    <div>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KyleK86">
+                            <i className="fa fa-github-alt fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://kylek86.github.io">
+                            <i className="fa fa-user-circle fa-2x"></i>
+                        </a>
+                        <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kyle-knox-2369a150/">
+                            <i class="fa fa-linkedin fa-2x"></i>
+                        </a>
+                    </div>
+                    <div className="pt-2">
+                        Kyle Knox
+                    </div>
+                </div>
             </div>
             <div className="py-2">
                 <small>

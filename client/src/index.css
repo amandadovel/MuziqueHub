@@ -1,21 +1,14 @@
-body,
-html {
+html,
+body {
     height: 100%;
-    min-height: 100%;
-    margin: 0;
-    background: url(../../client/src/images/red-smoke.jpg) center center fixed;
+    position: relative;
+}
+
+body {
+    background: url(../../client/src/images/red-smoke.jpg) center center no-repeat fixed;
     background-size: cover;
+    background-color: black;
     color: white;
-}
-
-#root {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.main {
-    margin-bottom: 7em;
 }
 
 body::-webkit-scrollbar {
@@ -37,4 +30,25 @@ body::-webkit-scrollbar-thumb {
         from(rgba(162, 1, 1, 0.918)),
         to(rgb(216, 64, 4)),
         color-stop(.6, rgb(104, 9, 0)))
+}
+
+.main{
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-top: 6em;
+    padding-bottom: 15em;
+}
+
+@media only screen and (max-width: 767px) {
+    .main {
+        padding-top: 2em;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

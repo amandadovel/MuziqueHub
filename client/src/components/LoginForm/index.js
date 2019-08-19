@@ -1,5 +1,4 @@
 import React from "react";
-import "./LoginForm.css";
 
 const LoginForm = ({ username, password, handleInputChange, handleFormSubmit, message }) => (
     <form>

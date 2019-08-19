@@ -17,12 +17,12 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
+    };
 
     handleFormSubmit = e => {
         e.preventDefault();
         this.login();
-    }
+    };
 
     login = () => {
         API.login({
@@ -40,7 +40,7 @@ class Login extends Component {
         }).catch(err => {
             console.log(err);
         });
-    }
+    };
 
     render() {
         return (

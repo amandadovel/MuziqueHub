@@ -1,5 +1,4 @@
 import React from "react";
-import "./SignupForm.css";
 
 const SignupForm = ({ username, email, password, passwordConf, handleInputChange, handleFormSubmit , message }) => (
     <form>

@@ -11,24 +11,22 @@ import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
 
 const App = () => (
-    <>  
-        <Router>
-            <Navbar />
-                <div className="main">
-                    <Container>
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/signup" component={Signup} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/favorites" component={Favorites} />
-                            <Route path="/concerts" component={Concerts} />
-                            <Route component={NotFound} />
-                        </Switch>
-                    </Container>
-                </div>
-            <Footer />
-        </Router>
-    </>
+    <Router>
+        <Navbar />
+        <div className="main">
+                <Container>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/signup" component={Signup} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/favorites" component={Favorites} />
+                        <Route path="/concerts" component={Concerts} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </Container>
+        <Footer />
+        </div>
+    </Router>
 );
 
 export default App;

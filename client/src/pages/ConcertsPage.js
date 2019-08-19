@@ -70,8 +70,6 @@ class ConcertSearch extends Component {
     };
 
     render() {
-        console.log(this.state);
-        
         return (
             <>
               <Row>
