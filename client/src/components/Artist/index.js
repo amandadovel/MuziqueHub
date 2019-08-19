@@ -8,7 +8,7 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
         <Row className="flex-wrap-reverse">
             <Col size="md-12">
                 {logo ? (
-                    <img src={logo} className="logo mx-auto d-block" alt="logo"></img>
+                    <img src={logo} className="logo img-fluid mx-auto d-block" alt="logo"></img>
                 ) : <div></div>}
 
                 <h1 className="artist-name text-center mt-3">{artist}</h1>
