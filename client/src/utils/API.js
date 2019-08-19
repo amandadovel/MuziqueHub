@@ -22,8 +22,11 @@ export default {
         return axios.get("/api/artist/search", { params: { artistName } });
     },
     // === send params to retrieve data from songkick api ===
-    getSongKickInfo: (artistName) => {
+    songkickArtistSearch: (artistName) => {
         return axios.get("/api/songkick/search", { params: { artistName }});
+    },
+    songkickLocationSearch: (location) => {
+        return axios.get("/api/songkick/location", { params: { location }});
     },
     // === get all favorites from database ===
     findAllFavorites: () => {
