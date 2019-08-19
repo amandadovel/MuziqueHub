@@ -68,7 +68,7 @@ class Favorites extends Component {
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            <h1 className="text-center">Favorites</h1>
+                            <h1 className="text-center"><strong>Favorites</strong></h1>
                             <h2 className="text-center">Build a list of your favorite artists!</h2>
                         </Jumbotron>
                     </Col>
