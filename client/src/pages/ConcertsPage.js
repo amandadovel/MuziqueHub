@@ -53,8 +53,8 @@ class ConcertSearch extends Component {
               <Row>
                     <Col size="md-12">
                         <Jumbotron>
-                            <h1 className="text-center"><strong>Live Performances</strong></h1>
-                            <h2 className="text-center">Are they near you soon?</h2>
+                            <h1 className="text-center px-2"><strong>Live Performances</strong></h1>
+                            <h2 className="text-center px-2">Are they near you soon?</h2>
                         </Jumbotron>
                     </Col>
                 </Row> 
