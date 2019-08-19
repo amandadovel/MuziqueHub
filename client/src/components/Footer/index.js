@@ -14,7 +14,7 @@ const Footer = () => (
                             <i className="fa fa-user-circle fa-2x"></i>
                         </a>
                         <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joey-kubalak-425032180/">
-                            <i class="fa fa-linkedin fa-2x"></i>
+                            <i className="fa fa-linkedin fa-2x"></i>
                         </a>
                     </div>
                     <div className="pt-2">
@@ -30,7 +30,7 @@ const Footer = () => (
                             <i className="fa fa-user-circle fa-2x"></i>
                         </a>
                         <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/amanda-dovel-5140b726/">
-                            <i class="fa fa-linkedin fa-2x"></i>
+                            <i className="fa fa-linkedin fa-2x"></i>
                         </a>
                     </div>
                     <div className="pt-2">
@@ -46,7 +46,7 @@ const Footer = () => (
                             <i className="fa fa-user-circle fa-2x"></i>
                         </a>
                         <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kyle-knox-2369a150/">
-                            <i class="fa fa-linkedin fa-2x"></i>
+                            <i className="fa fa-linkedin fa-2x"></i>
                         </a>
                     </div>
                     <div className="pt-2">

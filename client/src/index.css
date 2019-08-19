@@ -37,7 +37,7 @@ body::-webkit-scrollbar-thumb {
     overflow: hidden;
     display: block;
     position: relative;
-    padding-top: 6em;
+    padding-top: 8em;
     padding-bottom: 15em;
 }
 
