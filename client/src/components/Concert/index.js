@@ -2,7 +2,7 @@ import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./Concert.css"
-import songKickLogo from "../../images/songkickLogo.png"
+import songKickLogo from "../../images/songkickLogo.png";
 
 const Concert = ({ event, type, date, venue, location, Button }) => (
     <ListItem>

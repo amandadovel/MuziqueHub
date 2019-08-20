@@ -5,6 +5,7 @@
 }
 
 .biography {
+    letter-spacing: 0.5px;
     line-height: 1.75em;
     font-family: 'DM Serif Text', serif;
 }

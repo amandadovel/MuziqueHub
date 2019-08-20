@@ -59,6 +59,6 @@ router.get("/clear", (req, res) => {
         )
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err))
-})
+});
 
 module.exports = router;

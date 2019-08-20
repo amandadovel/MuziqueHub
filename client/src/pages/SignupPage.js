@@ -48,6 +48,7 @@ class Signup extends Component {
     };
 
     render() {
+        document.title = "MuziqueHub | Signup";
         return (
             <>
                 <Row center>

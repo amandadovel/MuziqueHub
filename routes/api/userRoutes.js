@@ -13,7 +13,7 @@ router.post("/signup",
             .withMessage("Username must be between 5-15 characters"),
         check("email")
             .isEmail()
-            .withMessage("Must use a valid email address")
+            .withMessage("Invalid email address")
             .custom(async email => {
                 const user = await db.User.findOne({ email: email });
                 if (user) {
@@ -22,14 +22,14 @@ router.post("/signup",
             }),
         check("password")
             .isLength(8, 65)
-            .withMessage("Password must be between 8-60 characters."),
-        // === strong password validation ===
-        // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,"i")
-        // .withMessage("Password must include a lowercase, uppercase, number, and a special character."),
+            .withMessage("Password must be at least 8 characters")
+            // === strong password validation ===
+            .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,"i")
+            .withMessage("Password must include a lowercase, uppercase, number, and a special character"),
         check("passwordConf")
             .custom((value, { req }) => {
                 if (value !== req.body.password) {
-                    return Promise.reject("Passwords do not match.");
+                    return Promise.reject("Passwords do not match");
                 } else if (value === "") {
                     return Promise.reject("Missing credentials");
                 } else {
@@ -49,7 +49,7 @@ router.post("/signup",
         db.User.findOne({ username: username }, (err, user) => {
             if (err) throw err;
             if (user) {
-                return res.json({ error: ["User already exists"] });
+                return res.json({ error: ["Username already exists"] });
             }
             if (!user) {
                 let newUser = new db.User({
@@ -82,7 +82,7 @@ router.get("/logout", auth.logout, (req, res, next) => {
     res.json("Logout successful");
 });
 
-// Favorite route restricted to logged in users
+// Auth route restricted to logged in users only
 router.get("/auth", auth.loggedIn, (req, res, next) => {
     res.json({ user: req.user, loggedIn: true });
 });

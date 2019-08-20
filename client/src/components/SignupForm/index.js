@@ -36,6 +36,7 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
                 onChange={ handleInputChange }
                 required
             />
+            <div><small>At least 8 chars with lowercase, uppercase, number, and special character</small></div>
             <label htmlFor="PasswordConf">Re-Enter Password</label>
             <input
                 className="form-control"
