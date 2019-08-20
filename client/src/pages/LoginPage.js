@@ -43,6 +43,7 @@ class Login extends Component {
     };
 
     render() {
+        document.title = "MuziqueHub | Login";
         return (
             <>
                 <Row center>

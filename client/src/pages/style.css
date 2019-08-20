@@ -33,3 +33,10 @@ hr {
 label {
     margin-top: 0.75em;
 }
+
+.alert-danger {
+    font-size: .8em;
+    padding: 0.7em;
+    text-align: center;
+    margin-top: 0.5em !important;
+}

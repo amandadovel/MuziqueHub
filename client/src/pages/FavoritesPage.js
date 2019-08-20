@@ -6,16 +6,24 @@ import API from "../utils/API";
 import Card from "../components/Card";
 import Artist from "../components/Artist";
 import "./style.css";
+import loading from "../images/loadRipple.gif";
 
 class Favorites extends Component {
     state = {
         favorites: [],
         message: "",
         loggedIn: false,
-        user: null
+        user: null,
     }
 
+    loading = () => {
+        this.setState({
+            message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
+        });
+    };
+
     componentDidMount() {
+        this.loading();
         API.isLoggedIn()
             .then(user => {
                 if (user.data.loggedIn) {
@@ -44,7 +52,7 @@ class Favorites extends Component {
                     })
                 } else {
                     this.setState({
-                        message: "No favorites saved, search for an artist to save in your favorites."
+                        message: "No favorites saved yet..."
                     })
                 }
             })
@@ -63,6 +71,7 @@ class Favorites extends Component {
     };
 
     render() {
+        document.title = "MuziqueHub | Favorites";
         return (
             <>
                 <Row>
@@ -75,7 +84,7 @@ class Favorites extends Component {
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <h2 className="message text-center">{this.state.message}</h2>
+                        <h2 className="message text-center">{(this.state.message)}</h2>
                     </Col>
                 </Row>
                 <Row>

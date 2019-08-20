@@ -4,7 +4,6 @@ const moment = require('moment');
 require("dotenv").config();
 const apiKey = process.env.REACT_APP_SONGKICK_KEY;
 
-
 // Function to parse SongKick response data
 songkickParse = (results) => {
     return results.data.resultsPage.results.event.map(result => {
@@ -16,7 +15,7 @@ songkickParse = (results) => {
                 artistLink: item.artist.uri
             }
             performance.push(performer);
-        })
+        });
         return { 
             eventId: result.id,
             event: result.displayName, 
@@ -27,8 +26,8 @@ songkickParse = (results) => {
             location: result.location.city,
             performance: performance
         };
-    })
-}
+    });
+};
 
 // Macthes with /api/songkick/search
 router.get("/search" , (req, res) => {

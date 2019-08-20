@@ -8,13 +8,21 @@ import Card from "../components/Card";
 import Concert from  "../components/Concert";
 import API from "../utils/API";
 import "./style.css";
+import loading from "../images/loadRipple.gif";
 
 class ConcertSearch extends Component {
     state = {
         concerts: [],
         artistName: "",
         location: "",
-        message: "Search for a Concert!"
+        message: "Search for a Concert!",
+    };
+
+    loading = () => {
+        this.setState({
+            concerts: [],
+            message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
+        });
     };
 
     handleInputChange = e => {
@@ -24,6 +32,7 @@ class ConcertSearch extends Component {
     };
 
     artistSearch = () => {
+        this.loading();
         API.songkickArtistSearch(this.state.artistName)
             .then(res =>
                this.setState({
@@ -39,6 +48,7 @@ class ConcertSearch extends Component {
     };
 
     locationSearch = () => {
+        this.loading();
         API.songkickLocationSearch(this.state.location)
             .then(res =>
                this.setState({
@@ -65,11 +75,13 @@ class ConcertSearch extends Component {
 
     handleClearResults = () => {
         this.setState({
-            concerts: []
+            concerts: [],
+            message: "Search for a Concert!"
         });
     };
 
     render() {
+        document.title = "MuziqueHub | Concerts";
         return (
             <>
               <Row>

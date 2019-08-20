@@ -7,6 +7,7 @@ import Card from "../components/Card";
 import Artist from "../components/Artist";
 import API from "../utils/API";
 import "./style.css";
+import loading from "../images/loadRipple.gif";
 
 class ArtistSearch extends Component {
     state = {
@@ -14,7 +15,14 @@ class ArtistSearch extends Component {
         artistName: "",
         message: "Search for your favorite artist!",
         loggedIn: false,
-        user: null
+        user: null,
+    };
+
+    loading = () => {
+        this.setState({
+            artists: [],
+            message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
+        });
     };
 
     componentDidMount() {
@@ -41,7 +49,8 @@ class ArtistSearch extends Component {
     };
     
     getArtistInfo = () => {
-        API.getArtistInfo(this.state.artistName)
+        this.loading();
+        API.getArtistInfo((this.state.artistName || "Mac Miller"))
             .then(res =>
                 this.setState({
                     artists: res.data 
@@ -97,11 +106,13 @@ class ArtistSearch extends Component {
 
     handleClearResults = () => {
         this.setState({
-            artists: []
+            artists: [],
+            message: "Search for your favorite artist!"
         });
     };
 
     render() {
+        document.title = "MuziqueHub | Home";
         return (
             <>
                 <Row>
