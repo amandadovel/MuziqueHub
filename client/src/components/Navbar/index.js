@@ -27,7 +27,8 @@ class Navbar extends Component {
                     });
                 }
             });
-    }
+    };
+
     logout() {
         API.logout()
             .then(data => {
@@ -36,7 +37,7 @@ class Navbar extends Component {
             .catch(err => {
                 console.log(err);
             });
-    }
+    };
 
     render() {
         return (

@@ -25,6 +25,6 @@ const LocationForm = ({ location, handleInputChange, handleFormSubmit }) => (
             </button>
         </div>
     </form>
-)
+);
 
 export default LocationForm;
