@@ -180,6 +180,6 @@ class ArtistSearch extends Component {
             </>
         )
     }
-}
+};
 
 export default ArtistSearch;

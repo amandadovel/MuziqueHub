@@ -10,17 +10,13 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                 {logo ? (
                     <img src={logo} className="logo img-fluid mx-auto d-block" alt="logo"></img>
                 ) : <div></div>}
-
                 <h1 className="artist-name text-center mt-3">{artist}</h1>
-
                 <div className="font-italic text-center">
                     <small>{country}</small>
                 </div>
                 <br></br>
-
                 <h2 className="genre text-center">{genre}</h2>
                 <br></br>
-
                 {label ? (
                     <h3 className="record-label text-center">Record Label: {label}</h3>
                 ) : <div></div>}
@@ -74,7 +70,6 @@ const Artist = ({ artist, label, genre, website, facebook, twitter, biography, c
                         ))}
                     </div>
                 ) : <div></div>}
-              
             </Col>
         </Row>
         <Row>

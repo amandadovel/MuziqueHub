@@ -8,10 +8,10 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
                 className="form-control"
                 id="Username"
                 type="text"
-                value={ username }
+                value={username}
                 placeholder="Enter Username"
                 name="username"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
             <label htmlFor="Email">Email</label>
@@ -19,10 +19,10 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
                 className="form-control"
                 id="Email"
                 type="email"
-                value={ email }
+                value={email}
                 placeholder="Enter Email"
                 name="email"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
             <label htmlFor="Password">Password</label>
@@ -30,10 +30,10 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
                 className="form-control"
                 id="Password"
                 type="password"
-                value={ password }
+                value={password}
                 placeholder="Enter Password"
                 name="password"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
             <div><small>At least 8 chars with lowercase, uppercase, number, and special character</small></div>
@@ -42,30 +42,30 @@ const SignupForm = ({ username, email, password, passwordConf, handleInputChange
                 className="form-control"
                 id="PasswordConf"
                 type="password"
-                value={ passwordConf }
+                value={passwordConf}
                 placeholder="Re-Enter Password"
                 name="passwordConf"
-                onChange={ handleInputChange }
+                onChange={handleInputChange}
                 required
             />
         </div>
         <div className="d-flex justify-content-center">
             <button
-                onClick={ handleFormSubmit }
+                onClick={handleFormSubmit}
                 type="submit"
                 className="btn btn-success"
             >Sign Up
             </button>
         </div>
-        { message ? (
+        {message ? (
             <>
-                { message.map(msg => (
-                    <div className="alert alert-danger mt-3 mb-0" key={ msg }>
-                        <span>{ msg }</span>
+                {message.map(msg => (
+                    <div className="alert alert-danger mt-3 mb-0" key={msg}>
+                        <span>{msg}</span>
                     </div>
-                )) }
+                ))}
             </>
-        ) : <div></div> }
+        ) : <div></div>}
     </form>
 );
 

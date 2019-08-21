@@ -4,15 +4,17 @@ class SearchBar extends Component {
     state = {
         term: 'Default tect'
     };
+
     handleChange = (event) => {
         this.setState({
             term:event.target.value
         });
     };
+
     handleSubmit = event => {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
-    }
+    };
 
     render() {
         return (
@@ -24,7 +26,8 @@ class SearchBar extends Component {
                     </div>
                 </form>
             </div>
-        )
+        );
     }
-}
+};
+
 export default SearchBar;

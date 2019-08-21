@@ -5,6 +5,6 @@ const Jumbotron = ({ children }) => (
     <div className="jumbotron px-0">
         { children }
     </div>
-)
+);
 
 export default Jumbotron;
