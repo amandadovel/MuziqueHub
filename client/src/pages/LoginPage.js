@@ -13,6 +13,10 @@ class Login extends Component {
         password: ""
     };
 
+    componentWillMount() {
+        document.title = "MuziqueHub | Login";
+    };
+
     handleInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -43,7 +47,6 @@ class Login extends Component {
     };
 
     render() {
-        document.title = "MuziqueHub | Login";
         return (
             <>
                 <Row center>

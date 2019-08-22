@@ -18,28 +18,32 @@ class ArtistSearch extends Component {
         user: null,
     };
 
+    componentWillMount() {
+        document.title = "MuziqueHub | Home";
+    };
+    
+    componentDidMount() {
+        API.isLoggedIn()
+        .then(user => {
+            if (user.data.loggedIn) {
+                this.setState({
+                    loggedIn: true,
+                    user: user.data.user
+                });
+            } else {
+                this.setState({
+                    loggedIn: false
+                });
+            }
+        })
+        .catch(err => console.log(err));
+    };
+    
     loading = () => {
         this.setState({
             artists: [],
             message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
         });
-    };
-
-    componentDidMount() {
-        API.isLoggedIn()
-            .then(user => {
-                if (user.data.loggedIn) {
-                    this.setState({
-                        loggedIn: true,
-                        user: user.data.user
-                    });
-                } else {
-                    this.setState({
-                        loggedIn: false
-                    });
-                }
-            })
-            .catch(err => console.log(err));
     };
 
     handleInputChange = e => {
@@ -112,7 +116,6 @@ class ArtistSearch extends Component {
     };
 
     render() {
-        document.title = "MuziqueHub | Home";
         return (
             <>
                 <Row>

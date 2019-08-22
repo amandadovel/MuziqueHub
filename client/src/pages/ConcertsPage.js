@@ -18,6 +18,10 @@ class ConcertSearch extends Component {
         message: "Search for a Concert!",
     };
 
+    componentWillMount() {
+        document.title = "MuziqueHub | Concerts";
+    };
+
     loading = () => {
         this.setState({
             concerts: [],
@@ -81,7 +85,6 @@ class ConcertSearch extends Component {
     };
 
     render() {
-        document.title = "MuziqueHub | Concerts";
         return (
             <>
               <Row>
