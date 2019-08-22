@@ -14,12 +14,10 @@ class Favorites extends Component {
         message: "",
         loggedIn: false,
         user: null,
-    }
+    };
 
-    loading = () => {
-        this.setState({
-            message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
-        });
+    componentWillMount() {
+        document.title = "MuziqueHub | Favorites";
     };
 
     componentDidMount() {
@@ -41,6 +39,12 @@ class Favorites extends Component {
                 }
             })
             .catch(err => console.log(err));
+    };
+
+    loading = () => {
+        this.setState({
+            message: <img className="img-fluid" src={loading} alt="loading ripple"></img>
+        });
     };
 
     findAllFavorites = () => {
@@ -71,7 +75,6 @@ class Favorites extends Component {
     };
 
     render() {
-        document.title = "MuziqueHub | Favorites";
         return (
             <>
                 <Row>
